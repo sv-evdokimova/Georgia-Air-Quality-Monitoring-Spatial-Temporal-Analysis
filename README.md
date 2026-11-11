@@ -153,7 +153,7 @@ up to 51 μg/m3 versus 40 μg/m3 in Tbilisi, and PM 2.5 up to 35 μg/m3 versus 2
 conditions — play an important role.
 
 ![PM10_seasonal](outputs/figures/PM10_seasonal.png)
-![PM2_5_seasonal.png](outputs\figures\PM2_5_seasonal.png)
+![PM2_5_seasonal.png](outputs/figures/PM2_5_seasonal.png)
 ![NO2_seasonal.png](outputs/figures/NO2_seasonal.png)
 - **Tbilisi vs. Rustavi:** [Insert a comparison supported by the data.]
 - **Station-level differences:** [Identify noteworthy variation and its limitations.]
