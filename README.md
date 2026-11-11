@@ -69,6 +69,9 @@ Georgia-Air-Quality-Monitoring/
 │       └── stations_coords.csv
 ├── outputs/
 │   ├── figures/                   # Time-series and seasonal charts
+|   |   ├── PM10_seasonal.png
+|   |   ├── PM2_5_seasonal.png
+|   |   ├── NO2_seasonal.png     
 │   └── maps/
 │       └── air_quality_seasonal_map.html
 ├── images/
@@ -112,7 +115,7 @@ Open `outputs/maps/air_quality_seasonal_map.html` in a web browser. Internet acc
 
 The Folium map provides pollutant and season selections, station markers, popups with mean concentrations, and a concentration legend. Color scales are held constant **across seasons within each pollutant** to support seasonal comparisons.
 
-![Interactive Air Quality Map](images/imagesair_quality_map.JPG)
+![Interactive Air Quality Map](output/figures/ sair_quality_map.JPG)
 
 *Replace the placeholder image with an actual screenshot saved at `images/air_quality_map.png`.*
 
@@ -139,7 +142,10 @@ These are processing checks, **not** claims of complete daily coverage for every
 
 *Complete this section after reviewing the final plots and tables.*
 
-- **Seasonality:** [Insert a quantified finding and the relevant figure.]
+- **Seasonality:** 
+![Interactive Air Quality Map](output/figures/PM10_seasonal.png)
+![Interactive Air Quality Map](output/figures/PM2_5_seasonal.png)
+![Interactive Air Quality Map](output/figures/NO2_seasonal.png)
 - **Tbilisi vs. Rustavi:** [Insert a comparison supported by the data.]
 - **Station-level differences:** [Identify noteworthy variation and its limitations.]
 - **Data quality:** [Summarize missingness and any measurement anomalies.]
