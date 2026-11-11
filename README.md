@@ -143,10 +143,19 @@ These are processing checks, **not** claims of complete daily coverage for every
 
 *Complete this section after reviewing the final plots and tables.*
 
-- **Seasonality:** 
-(output/figures/PM10_seasonal.png)
-![Interactive Air Quality Map](output/figures/PM2_5_seasonal.png)
-![Interactive Air Quality Map](output/figures/NO2_seasonal.png)
+- **Seasonality:**
+As shown in the graphs, the concentrations of both particulate matter and NO2 are markedly higher during the autumn and winter periods. For 
+NO 2, the values range from 18 to 38 μg/m3 in Rustavi and from 41 to 54 μg/m3 in Tbilisi. For PM 2.5, the ranges are 16–35 μg/m3
+(Rustavi) and 11–24 μg/m3 (Tbilisi); for PM 10, they are 38–51 μg/m3 (Rustavi) and 29–40 μg/m3 (Tbilisi).
+These elevated and variable concentrations may negatively affect the health and well-being of the residents.
+
+Tbilisi is a considerably larger city, and, as the graphs show, the total volume of exhaust-gas emissions there is greater. Nevertheless, in terms of particulate-matter concentrations, Rustavi shows higher values (for example, PM10
+up to 51 μg/m3 versus 40 μg/m3 in Tbilisi, and PM 2.5 up to 35 μg/m3 versus 24 μg/m3). This suggests that factors other than the sheer volume of traffic emissions — such as local topography, heating systems, or meteorological 
+conditions — play an important role.
+
+![PM10_seasonal](output/figures/PM10_seasonal.png)
+![PM2_5_seasonal.png](output/figures/PM2_5_seasonal.png)
+![NO2_seasonal.png](output/figures/NO2_seasonal.png)
 - **Tbilisi vs. Rustavi:** [Insert a comparison supported by the data.]
 - **Station-level differences:** [Identify noteworthy variation and its limitations.]
 - **Data quality:** [Summarize missingness and any measurement anomalies.]
