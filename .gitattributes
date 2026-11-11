@@ -1,3 +1,2 @@
-# Generated Folium maps
-outputs/maps/*.html linguist-generated=true
-map.html linguist-generated=true
+# Exclude generated Folium maps from language statistics
+*.html linguist-generated=true
