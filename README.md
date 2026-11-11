@@ -152,9 +152,9 @@ Tbilisi is a considerably larger city, and, as the graphs show, the total volume
 up to 51 μg/m3 versus 40 μg/m3 in Tbilisi, and PM 2.5 up to 35 μg/m3 versus 24 μg/m3). This suggests that factors other than the sheer volume of traffic emissions — such as local topography, heating systems, or meteorological 
 conditions — play an important role.
 
-![PM10_seasonal](output/figures/PM10_seasonal.png)
-![PM2_5_seasonal.png](output/figures/PM2_5_seasonal.png)
-![NO2_seasonal.png](output/figures/NO2_seasonal.png)
+![PM10_seasonal](outputs/figures/PM10_seasonal.png)
+![PM2_5_seasonal.png](outputs\figures\PM2_5_seasonal.png)
+![NO2_seasonal.png](outputs/figures/NO2_seasonal.png)
 - **Tbilisi vs. Rustavi:** [Insert a comparison supported by the data.]
 - **Station-level differences:** [Identify noteworthy variation and its limitations.]
 - **Data quality:** [Summarize missingness and any measurement anomalies.]
