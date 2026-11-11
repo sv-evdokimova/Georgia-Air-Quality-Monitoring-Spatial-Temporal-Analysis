@@ -118,7 +118,7 @@ The Folium map provides pollutant and season selections, station markers, popups
 
 If you publish the HTML map, add a link here:
 
-**[Open the interactive map](#)** <!-- [https://github.com/si187971-dev/Georgia-Air-Quality-Monitoring-Spatial-Temporal-Analysis/blob/main/outputs/maps/air_quality_seasonal_map.html] -->
+**[Open the interactive map](#)** (https://github.com/si187971-dev/Georgia-Air-Quality-Monitoring-Spatial-Temporal-Analysis/blob/main/outputs/maps/air_quality_seasonal_map.html)
 
 ## Preliminary data coverage
 
