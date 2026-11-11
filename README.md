@@ -71,7 +71,8 @@ Georgia-Air-Quality-Monitoring/
 │   ├── figures/                   # Time-series and seasonal charts
 │   └── maps/
 │       └── air_quality_seasonal_map.html
-├── images/                        # Screenshots for this README
+├── images/
+|       └── air_quality_map.jpg        # Screenshots for this README
 ├── 03_merge_data.py
 ├── 04_data_quality.py
 ├── 05_temporal_analysis.py
