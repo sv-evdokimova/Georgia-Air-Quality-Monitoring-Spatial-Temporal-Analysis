@@ -353,3 +353,4 @@ print(output_file.resolve())
 print("Всего слоёв:", len(layer_info))
 print("Станций с координатами:",
         station_season["station"].nunique())
+m.save("map.html")
