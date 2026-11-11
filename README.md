@@ -111,7 +111,7 @@ Open `outputs/maps/air_quality_seasonal_map.html` in a web browser. Internet acc
 
 The Folium map provides pollutant and season selections, station markers, popups with mean concentrations, and a concentration legend. Color scales are held constant **across seasons within each pollutant** to support seasonal comparisons.
 
-![Interactive air quality map — add screenshot](images/air_quality_map.jpg)
+![Interactive air quality map — add screenshot][images/air_quality_map.jpg]
 
 *Replace the placeholder image with an actual screenshot saved at `images/air_quality_map.png`.*
 
