@@ -72,7 +72,7 @@ Georgia-Air-Quality-Monitoring/
 │   └── maps/
 │       └── air_quality_seasonal_map.html
 ├── images/
-|       └── air_quality_map.jpg        # Screenshots for this README
+|       └── images/imagesair_quality_map.JPG        # Screenshots for this README
 ├── 03_merge_data.py
 ├── 04_data_quality.py
 ├── 05_temporal_analysis.py
@@ -112,7 +112,7 @@ Open `outputs/maps/air_quality_seasonal_map.html` in a web browser. Internet acc
 
 The Folium map provides pollutant and season selections, station markers, popups with mean concentrations, and a concentration legend. Color scales are held constant **across seasons within each pollutant** to support seasonal comparisons.
 
-![Interactive Air Quality Map](images/air_quality_map.jpg)
+![Interactive Air Quality Map](images/imagesair_quality_map.JPG)
 
 *Replace the placeholder image with an actual screenshot saved at `images/air_quality_map.png`.*
 
