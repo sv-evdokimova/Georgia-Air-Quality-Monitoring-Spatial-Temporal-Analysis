@@ -71,7 +71,8 @@ Georgia-Air-Quality-Monitoring/
 │   ├── figures/                   # Time-series and seasonal charts
 |   |   ├── PM10_seasonal.png
 |   |   ├── PM2_5_seasonal.png
-|   |   ├── NO2_seasonal.png     
+|   |   └── NO2_seasonal.png
+|   |    
 │   └── maps/
 │       └── air_quality_seasonal_map.html
 ├── images/
@@ -143,7 +144,7 @@ These are processing checks, **not** claims of complete daily coverage for every
 *Complete this section after reviewing the final plots and tables.*
 
 - **Seasonality:** 
-![Interactive Air Quality Map](output/figures/PM10_seasonal.png)
+(output/figures/PM10_seasonal.png)
 ![Interactive Air Quality Map](output/figures/PM2_5_seasonal.png)
 ![Interactive Air Quality Map](output/figures/NO2_seasonal.png)
 - **Tbilisi vs. Rustavi:** [Insert a comparison supported by the data.]
