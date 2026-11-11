@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_77a609d16f15ea4cf8da60c3a333e654 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div id="aq-legend" style="
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    background: white;
+    padding: 14px 16px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #0003;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    min-width: 220px;
+">
+    <div id="aq-title"
+         style="font-weight: bold; margin-bottom: 8px;">
+        PM2.5 | Winter
+    </div>
+
+    <div style="
+        height: 14px;
+        border-radius: 4px;
+        background: linear-gradient(
+            to right,
+            #ffffb2,
+            #fecc5c,
+            #fd8d3c,
+            #f03b20,
+            #bd0026
+        );
+    "></div>
+
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+    ">
+        <span id="aq-min"></span>
+        <span id="aq-max"></span>
+    </div>
+
+    <div style="margin-top: 7px; color: #555;">
+    Average concentration, µg/m³
+    </div>
+</div>
+    
+            <div class="folium-map" id="map_77a609d16f15ea4cf8da60c3a333e654" ></div>
+        
+    
+        <div style="
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 9999;
+            background: white;
+            padding: 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0003;
+            font-family: Arial, sans-serif;
+            width: 190px;
+        ">
+            <b>Air Quality Monitoring</b>
+
+            <div style="margin-top: 12px;">
+                <label for="aq-pollutant">Pollutant</label>
+                <select id="aq-pollutant"
+                        style="width:100%; margin-top:5px;">
+                    <option value="PM2.5">PM2.5</option>
+                    <option value="PM10">PM10</option>
+                    <option value="NO2">NO₂</option>
+                </select>
+            </div>
+
+            <div style="margin-top: 12px;">
+        <label for="aq-season">Season</label>
+        <select id="aq-season"
+                style="width:100%; margin-top:5px;">
+            <option value="Winter">Winter</option>
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Autumn">Autumn</option>
+        </select>
+    </div>
+</div>
+        
+</body>
+<script>
+    
+    
+            var map_77a609d16f15ea4cf8da60c3a333e654 = L.map(
+                "map_77a609d16f15ea4cf8da60c3a333e654",
+                {
+                    center: [41.65, 44.9],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_77a609d16f15ea4cf8da60c3a333e654);
+
+            
+
+        
+    
+            var tile_layer_3762c03a4e755e15b4e29dbe34799c67 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3762c03a4e755e15b4e29dbe34799c67.addTo(map_77a609d16f15ea4cf8da60c3a333e654);
+        
+    
+            var feature_group_27421b41547ff8581fb28e3066381c87 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_7df971eb7ba12b7187ed55c7dd499a41 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_27421b41547ff8581fb28e3066381c87);
+        
+    
+        var popup_9bb507e71799e39c6c3279bc87bb027d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d75ba65745d1f29d56cdad89bd93893f = $(`<div id="html_d75ba65745d1f29d56cdad89bd93893f" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 18.30 µg/m³</div>`)[0];
+                popup_9bb507e71799e39c6c3279bc87bb027d.setContent(html_d75ba65745d1f29d56cdad89bd93893f);
+            
+        
+
+        circle_marker_7df971eb7ba12b7187ed55c7dd499a41.bindPopup(popup_9bb507e71799e39c6c3279bc87bb027d)
+        ;
+
+        
+    
+    
+            circle_marker_7df971eb7ba12b7187ed55c7dd499a41.bindTooltip(
+                `<div>
+                     KZBG: 18.30 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9cf0b803a6628eafedb7609b30a42d49 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_27421b41547ff8581fb28e3066381c87);
+        
+    
+        var popup_acf6d98d303e823b3a9028d88ec0ca13 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_658c8d06602df0dafeb2f3a5236cf853 = $(`<div id="html_658c8d06602df0dafeb2f3a5236cf853" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 21.69 µg/m³</div>`)[0];
+                popup_acf6d98d303e823b3a9028d88ec0ca13.setContent(html_658c8d06602df0dafeb2f3a5236cf853);
+            
+        
+
+        circle_marker_9cf0b803a6628eafedb7609b30a42d49.bindPopup(popup_acf6d98d303e823b3a9028d88ec0ca13)
+        ;
+
+        
+    
+    
+            circle_marker_9cf0b803a6628eafedb7609b30a42d49.bindTooltip(
+                `<div>
+                     ORN01: 21.69 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3ef7a777cf2e635f3a2a0320fa3a37fc = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f03b20", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_27421b41547ff8581fb28e3066381c87);
+        
+    
+        var popup_97e373c0ee5c7ebc7eb93eba7df40ab8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5e860a9003f7b9e774bc672724f561ac = $(`<div id="html_5e860a9003f7b9e774bc672724f561ac" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 28.96 µg/m³</div>`)[0];
+                popup_97e373c0ee5c7ebc7eb93eba7df40ab8.setContent(html_5e860a9003f7b9e774bc672724f561ac);
+            
+        
+
+        circle_marker_3ef7a777cf2e635f3a2a0320fa3a37fc.bindPopup(popup_97e373c0ee5c7ebc7eb93eba7df40ab8)
+        ;
+
+        
+    
+    
+            circle_marker_3ef7a777cf2e635f3a2a0320fa3a37fc.bindTooltip(
+                `<div>
+                     ORN02: 28.96 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f8f9138daa5eb3468772a5c14b244c2d = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bd0026", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_27421b41547ff8581fb28e3066381c87);
+        
+    
+        var popup_1aef37fdb9cad1a9f6fd4b3b7c155344 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_76c34b56bfc22b73b4e9d124c6e8abb1 = $(`<div id="html_76c34b56bfc22b73b4e9d124c6e8abb1" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 36.83 µg/m³</div>`)[0];
+                popup_1aef37fdb9cad1a9f6fd4b3b7c155344.setContent(html_76c34b56bfc22b73b4e9d124c6e8abb1);
+            
+        
+
+        circle_marker_f8f9138daa5eb3468772a5c14b244c2d.bindPopup(popup_1aef37fdb9cad1a9f6fd4b3b7c155344)
+        ;
+
+        
+    
+    
+            circle_marker_f8f9138daa5eb3468772a5c14b244c2d.bindTooltip(
+                `<div>
+                     RST18: 36.83 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1e22a48a4bd0f355249c1d7d4cdd1c22 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_27421b41547ff8581fb28e3066381c87);
+        
+    
+        var popup_0d70fb62cfea1a3872d2a78100066f67 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e130b848868096808dfd790fbe5185e3 = $(`<div id="html_e130b848868096808dfd790fbe5185e3" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 25.21 µg/m³</div>`)[0];
+                popup_0d70fb62cfea1a3872d2a78100066f67.setContent(html_e130b848868096808dfd790fbe5185e3);
+            
+        
+
+        circle_marker_1e22a48a4bd0f355249c1d7d4cdd1c22.bindPopup(popup_0d70fb62cfea1a3872d2a78100066f67)
+        ;
+
+        
+    
+    
+            circle_marker_1e22a48a4bd0f355249c1d7d4cdd1c22.bindTooltip(
+                `<div>
+                     TSRT: 25.21 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_27421b41547ff8581fb28e3066381c87.addTo(map_77a609d16f15ea4cf8da60c3a333e654);
+        
+    
+            var feature_group_5380f8a81f1bc3dec82f33d6f3a0ee8f = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_e415bea1ff1bb680af6a3f432a609771 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5380f8a81f1bc3dec82f33d6f3a0ee8f);
+        
+    
+        var popup_966c444d0285a663c1679d75fdd950bd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_db0704c84d83ed60b0b06e67f38458d9 = $(`<div id="html_db0704c84d83ed60b0b06e67f38458d9" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 14.15 µg/m³</div>`)[0];
+                popup_966c444d0285a663c1679d75fdd950bd.setContent(html_db0704c84d83ed60b0b06e67f38458d9);
+            
+        
+
+        circle_marker_e415bea1ff1bb680af6a3f432a609771.bindPopup(popup_966c444d0285a663c1679d75fdd950bd)
+        ;
+
+        
+    
+    
+            circle_marker_e415bea1ff1bb680af6a3f432a609771.bindTooltip(
+                `<div>
+                     KZBG: 14.15 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f3465e6492c6094b2e9a1c2e46250a5a = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5380f8a81f1bc3dec82f33d6f3a0ee8f);
+        
+    
+        var popup_ea48f36c5f6d21e890fc15c8309f09ff = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cd60c1c12adbcb521e0639433cf80be8 = $(`<div id="html_cd60c1c12adbcb521e0639433cf80be8" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 9.75 µg/m³</div>`)[0];
+                popup_ea48f36c5f6d21e890fc15c8309f09ff.setContent(html_cd60c1c12adbcb521e0639433cf80be8);
+            
+        
+
+        circle_marker_f3465e6492c6094b2e9a1c2e46250a5a.bindPopup(popup_ea48f36c5f6d21e890fc15c8309f09ff)
+        ;
+
+        
+    
+    
+            circle_marker_f3465e6492c6094b2e9a1c2e46250a5a.bindTooltip(
+                `<div>
+                     ORN01: 9.75 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b733b086ff7922538578d9971e833766 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5380f8a81f1bc3dec82f33d6f3a0ee8f);
+        
+    
+        var popup_20723a923476816b512b72c68767e35e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b46d80e225454934bc2615dff9100dc4 = $(`<div id="html_b46d80e225454934bc2615dff9100dc4" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 13.88 µg/m³</div>`)[0];
+                popup_20723a923476816b512b72c68767e35e.setContent(html_b46d80e225454934bc2615dff9100dc4);
+            
+        
+
+        circle_marker_b733b086ff7922538578d9971e833766.bindPopup(popup_20723a923476816b512b72c68767e35e)
+        ;
+
+        
+    
+    
+            circle_marker_b733b086ff7922538578d9971e833766.bindTooltip(
+                `<div>
+                     ORN02: 13.88 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f4f01e8f704ccfb5864795bbb4aed92b = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5380f8a81f1bc3dec82f33d6f3a0ee8f);
+        
+    
+        var popup_ec9c83c2de75f632047e38f7c0fe2cc9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a179d91be810ea272e51a22c125552ad = $(`<div id="html_a179d91be810ea272e51a22c125552ad" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 20.70 µg/m³</div>`)[0];
+                popup_ec9c83c2de75f632047e38f7c0fe2cc9.setContent(html_a179d91be810ea272e51a22c125552ad);
+            
+        
+
+        circle_marker_f4f01e8f704ccfb5864795bbb4aed92b.bindPopup(popup_ec9c83c2de75f632047e38f7c0fe2cc9)
+        ;
+
+        
+    
+    
+            circle_marker_f4f01e8f704ccfb5864795bbb4aed92b.bindTooltip(
+                `<div>
+                     RST18: 20.70 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1bcf5ab3a45e9d02246dacc429a7b3b0 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5380f8a81f1bc3dec82f33d6f3a0ee8f);
+        
+    
+        var popup_5568bdd87e30cbc021719307cbf2c479 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ed4dc579e195b0cb2e891d6578b4d6f9 = $(`<div id="html_ed4dc579e195b0cb2e891d6578b4d6f9" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 15.45 µg/m³</div>`)[0];
+                popup_5568bdd87e30cbc021719307cbf2c479.setContent(html_ed4dc579e195b0cb2e891d6578b4d6f9);
+            
+        
+
+        circle_marker_1bcf5ab3a45e9d02246dacc429a7b3b0.bindPopup(popup_5568bdd87e30cbc021719307cbf2c479)
+        ;
+
+        
+    
+    
+            circle_marker_1bcf5ab3a45e9d02246dacc429a7b3b0.bindTooltip(
+                `<div>
+                     TSRT: 15.45 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_9fe22c45a5fe20611e97833087e26f58 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_5ca3d0f5315239ae223b5b67b5187d58 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_9fe22c45a5fe20611e97833087e26f58);
+        
+    
+        var popup_4bf36606343b04ed2fb7c6c2dc6fd5c3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8de0b69cf996962f33880e4724c636ff = $(`<div id="html_8de0b69cf996962f33880e4724c636ff" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 11.28 µg/m³</div>`)[0];
+                popup_4bf36606343b04ed2fb7c6c2dc6fd5c3.setContent(html_8de0b69cf996962f33880e4724c636ff);
+            
+        
+
+        circle_marker_5ca3d0f5315239ae223b5b67b5187d58.bindPopup(popup_4bf36606343b04ed2fb7c6c2dc6fd5c3)
+        ;
+
+        
+    
+    
+            circle_marker_5ca3d0f5315239ae223b5b67b5187d58.bindTooltip(
+                `<div>
+                     KZBG: 11.28 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_215d931b56de54b513790164c863492b = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_9fe22c45a5fe20611e97833087e26f58);
+        
+    
+        var popup_ec93937d6143811a3d3ed8d5219fbe1e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a2268cb226461c886a468dde316535d1 = $(`<div id="html_a2268cb226461c886a468dde316535d1" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 9.84 µg/m³</div>`)[0];
+                popup_ec93937d6143811a3d3ed8d5219fbe1e.setContent(html_a2268cb226461c886a468dde316535d1);
+            
+        
+
+        circle_marker_215d931b56de54b513790164c863492b.bindPopup(popup_ec93937d6143811a3d3ed8d5219fbe1e)
+        ;
+
+        
+    
+    
+            circle_marker_215d931b56de54b513790164c863492b.bindTooltip(
+                `<div>
+                     ORN01: 9.84 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e3e5fa5087ffc98295f5bfb25171af48 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_9fe22c45a5fe20611e97833087e26f58);
+        
+    
+        var popup_7cacb4b1a3232615c1df6b8232b4b90c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a45857fa61f537233ebbb7c6da11812e = $(`<div id="html_a45857fa61f537233ebbb7c6da11812e" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 12.78 µg/m³</div>`)[0];
+                popup_7cacb4b1a3232615c1df6b8232b4b90c.setContent(html_a45857fa61f537233ebbb7c6da11812e);
+            
+        
+
+        circle_marker_e3e5fa5087ffc98295f5bfb25171af48.bindPopup(popup_7cacb4b1a3232615c1df6b8232b4b90c)
+        ;
+
+        
+    
+    
+            circle_marker_e3e5fa5087ffc98295f5bfb25171af48.bindTooltip(
+                `<div>
+                     ORN02: 12.78 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_149c878d75b98e73d6271cdbdc2c39fa = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_9fe22c45a5fe20611e97833087e26f58);
+        
+    
+        var popup_bada02e2efff3ddc230b23502230839c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d21cf1dbada902d91558b018b36abf0d = $(`<div id="html_d21cf1dbada902d91558b018b36abf0d" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 17.69 µg/m³</div>`)[0];
+                popup_bada02e2efff3ddc230b23502230839c.setContent(html_d21cf1dbada902d91558b018b36abf0d);
+            
+        
+
+        circle_marker_149c878d75b98e73d6271cdbdc2c39fa.bindPopup(popup_bada02e2efff3ddc230b23502230839c)
+        ;
+
+        
+    
+    
+            circle_marker_149c878d75b98e73d6271cdbdc2c39fa.bindTooltip(
+                `<div>
+                     RST18: 17.69 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_878949480a24887853302185e6635fe3 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_9fe22c45a5fe20611e97833087e26f58);
+        
+    
+        var popup_8a7b2f166e6eea05ca6f97d7bb15a912 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d9eb05823d78d29732ba368d9adc8d1f = $(`<div id="html_d9eb05823d78d29732ba368d9adc8d1f" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 11.27 µg/m³</div>`)[0];
+                popup_8a7b2f166e6eea05ca6f97d7bb15a912.setContent(html_d9eb05823d78d29732ba368d9adc8d1f);
+            
+        
+
+        circle_marker_878949480a24887853302185e6635fe3.bindPopup(popup_8a7b2f166e6eea05ca6f97d7bb15a912)
+        ;
+
+        
+    
+    
+            circle_marker_878949480a24887853302185e6635fe3.bindTooltip(
+                `<div>
+                     TSRT: 11.27 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_e8ef89117efaf8ddb751000830af5aec = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_7cdd66a77cda67082768df407e36d726 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_e8ef89117efaf8ddb751000830af5aec);
+        
+    
+        var popup_742331d564001633d02f96b622647645 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d1c35c11f8e061d562a108b3a01d1cb9 = $(`<div id="html_d1c35c11f8e061d562a108b3a01d1cb9" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 15.01 µg/m³</div>`)[0];
+                popup_742331d564001633d02f96b622647645.setContent(html_d1c35c11f8e061d562a108b3a01d1cb9);
+            
+        
+
+        circle_marker_7cdd66a77cda67082768df407e36d726.bindPopup(popup_742331d564001633d02f96b622647645)
+        ;
+
+        
+    
+    
+            circle_marker_7cdd66a77cda67082768df407e36d726.bindTooltip(
+                `<div>
+                     KZBG: 15.01 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2648d458f77b2622d421d1353765a4d9 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_e8ef89117efaf8ddb751000830af5aec);
+        
+    
+        var popup_ac1df877f9b0e48c36baef50346d360e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_29fd6800a6666d5f38fae68421294aa7 = $(`<div id="html_29fd6800a6666d5f38fae68421294aa7" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 15.81 µg/m³</div>`)[0];
+                popup_ac1df877f9b0e48c36baef50346d360e.setContent(html_29fd6800a6666d5f38fae68421294aa7);
+            
+        
+
+        circle_marker_2648d458f77b2622d421d1353765a4d9.bindPopup(popup_ac1df877f9b0e48c36baef50346d360e)
+        ;
+
+        
+    
+    
+            circle_marker_2648d458f77b2622d421d1353765a4d9.bindTooltip(
+                `<div>
+                     ORN01: 15.81 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2ac881d50e142d9adb6e1276238dd56b = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_e8ef89117efaf8ddb751000830af5aec);
+        
+    
+        var popup_4e8744910c432a56a3e66682e0a43196 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_437a12e1d5a3510e9a7bea5c2fa14370 = $(`<div id="html_437a12e1d5a3510e9a7bea5c2fa14370" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 21.90 µg/m³</div>`)[0];
+                popup_4e8744910c432a56a3e66682e0a43196.setContent(html_437a12e1d5a3510e9a7bea5c2fa14370);
+            
+        
+
+        circle_marker_2ac881d50e142d9adb6e1276238dd56b.bindPopup(popup_4e8744910c432a56a3e66682e0a43196)
+        ;
+
+        
+    
+    
+            circle_marker_2ac881d50e142d9adb6e1276238dd56b.bindTooltip(
+                `<div>
+                     ORN02: 21.90 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_48b7fa99763dbda1cba58f40d8423c44 = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_e8ef89117efaf8ddb751000830af5aec);
+        
+    
+        var popup_d21310cad329dd35b29fc87b1f19d4f1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_39032e47fe77259a17317b8d4a41e620 = $(`<div id="html_39032e47fe77259a17317b8d4a41e620" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 24.16 µg/m³</div>`)[0];
+                popup_d21310cad329dd35b29fc87b1f19d4f1.setContent(html_39032e47fe77259a17317b8d4a41e620);
+            
+        
+
+        circle_marker_48b7fa99763dbda1cba58f40d8423c44.bindPopup(popup_d21310cad329dd35b29fc87b1f19d4f1)
+        ;
+
+        
+    
+    
+            circle_marker_48b7fa99763dbda1cba58f40d8423c44.bindTooltip(
+                `<div>
+                     RST18: 24.16 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_65307ec993a89a7e236e297a4698cda7 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_e8ef89117efaf8ddb751000830af5aec);
+        
+    
+        var popup_a63949d77256a12c2a2e99f568ca515f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_431ba284b661e88ffbf41f184d6e237d = $(`<div id="html_431ba284b661e88ffbf41f184d6e237d" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM2.5<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 20.56 µg/m³</div>`)[0];
+                popup_a63949d77256a12c2a2e99f568ca515f.setContent(html_431ba284b661e88ffbf41f184d6e237d);
+            
+        
+
+        circle_marker_65307ec993a89a7e236e297a4698cda7.bindPopup(popup_a63949d77256a12c2a2e99f568ca515f)
+        ;
+
+        
+    
+    
+            circle_marker_65307ec993a89a7e236e297a4698cda7.bindTooltip(
+                `<div>
+                     TSRT: 20.56 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_2e692dffb77e2340e3e745b830fd0b2b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_8f47afa991833cadb98ed936f61eab51 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_2e692dffb77e2340e3e745b830fd0b2b);
+        
+    
+        var popup_f805c1f8038737275d177a1d4e31cbb2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ab5386d370606d175f6e14ede6ab8b90 = $(`<div id="html_ab5386d370606d175f6e14ede6ab8b90" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 30.06 µg/m³</div>`)[0];
+                popup_f805c1f8038737275d177a1d4e31cbb2.setContent(html_ab5386d370606d175f6e14ede6ab8b90);
+            
+        
+
+        circle_marker_8f47afa991833cadb98ed936f61eab51.bindPopup(popup_f805c1f8038737275d177a1d4e31cbb2)
+        ;
+
+        
+    
+    
+            circle_marker_8f47afa991833cadb98ed936f61eab51.bindTooltip(
+                `<div>
+                     KZBG: 30.06 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f14fa2a8c2190ba29262d2250b39b6f1 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_2e692dffb77e2340e3e745b830fd0b2b);
+        
+    
+        var popup_b0b8b084db761e9acc5b35b312acc356 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_badc6977276624174474b6b84ac138f1 = $(`<div id="html_badc6977276624174474b6b84ac138f1" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 35.65 µg/m³</div>`)[0];
+                popup_b0b8b084db761e9acc5b35b312acc356.setContent(html_badc6977276624174474b6b84ac138f1);
+            
+        
+
+        circle_marker_f14fa2a8c2190ba29262d2250b39b6f1.bindPopup(popup_b0b8b084db761e9acc5b35b312acc356)
+        ;
+
+        
+    
+    
+            circle_marker_f14fa2a8c2190ba29262d2250b39b6f1.bindTooltip(
+                `<div>
+                     ORN01: 35.65 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9568c4afd3e5a438891fa1002c345c05 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f03b20", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_2e692dffb77e2340e3e745b830fd0b2b);
+        
+    
+        var popup_af3583e872c96fb777e0d8ad0fd4be0c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e952970306e2b2de12a2f5d9900dd31e = $(`<div id="html_e952970306e2b2de12a2f5d9900dd31e" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 47.68 µg/m³</div>`)[0];
+                popup_af3583e872c96fb777e0d8ad0fd4be0c.setContent(html_e952970306e2b2de12a2f5d9900dd31e);
+            
+        
+
+        circle_marker_9568c4afd3e5a438891fa1002c345c05.bindPopup(popup_af3583e872c96fb777e0d8ad0fd4be0c)
+        ;
+
+        
+    
+    
+            circle_marker_9568c4afd3e5a438891fa1002c345c05.bindTooltip(
+                `<div>
+                     ORN02: 47.68 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2b80bd85bb59fb0f1c453c6274df99af = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bd0026", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_2e692dffb77e2340e3e745b830fd0b2b);
+        
+    
+        var popup_7f2b487e2a0aa6de57937f146b4b5980 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c87345167866fc302f4eedec2651d631 = $(`<div id="html_c87345167866fc302f4eedec2651d631" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 55.09 µg/m³</div>`)[0];
+                popup_7f2b487e2a0aa6de57937f146b4b5980.setContent(html_c87345167866fc302f4eedec2651d631);
+            
+        
+
+        circle_marker_2b80bd85bb59fb0f1c453c6274df99af.bindPopup(popup_7f2b487e2a0aa6de57937f146b4b5980)
+        ;
+
+        
+    
+    
+            circle_marker_2b80bd85bb59fb0f1c453c6274df99af.bindTooltip(
+                `<div>
+                     RST18: 55.09 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_80838300bc61ac61bec4478639e774ff = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bd0026", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_2e692dffb77e2340e3e745b830fd0b2b);
+        
+    
+        var popup_3b9c44f6a2659be6e0dec7db5ab43947 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_33c0a4630d84d2c5389a16e4832980ed = $(`<div id="html_33c0a4630d84d2c5389a16e4832980ed" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 49.32 µg/m³</div>`)[0];
+                popup_3b9c44f6a2659be6e0dec7db5ab43947.setContent(html_33c0a4630d84d2c5389a16e4832980ed);
+            
+        
+
+        circle_marker_80838300bc61ac61bec4478639e774ff.bindPopup(popup_3b9c44f6a2659be6e0dec7db5ab43947)
+        ;
+
+        
+    
+    
+            circle_marker_80838300bc61ac61bec4478639e774ff.bindTooltip(
+                `<div>
+                     TSRT: 49.32 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_3f0a70232983a4a079d04a69904cf470 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_eededd2777de04a8758dc32564b434d1 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_3f0a70232983a4a079d04a69904cf470);
+        
+    
+        var popup_a61bdcd5645c4cd69e78cff997d35a72 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3194beb79317d143314e5ee645ca3e97 = $(`<div id="html_3194beb79317d143314e5ee645ca3e97" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 31.54 µg/m³</div>`)[0];
+                popup_a61bdcd5645c4cd69e78cff997d35a72.setContent(html_3194beb79317d143314e5ee645ca3e97);
+            
+        
+
+        circle_marker_eededd2777de04a8758dc32564b434d1.bindPopup(popup_a61bdcd5645c4cd69e78cff997d35a72)
+        ;
+
+        
+    
+    
+            circle_marker_eededd2777de04a8758dc32564b434d1.bindTooltip(
+                `<div>
+                     KZBG: 31.54 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_36fc09133201fb1b399679d1e4aa1344 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_3f0a70232983a4a079d04a69904cf470);
+        
+    
+        var popup_8077045c2cd8384028af778c837871a8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_63b50110bb22889f5a5cbcb935b41d75 = $(`<div id="html_63b50110bb22889f5a5cbcb935b41d75" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 23.01 µg/m³</div>`)[0];
+                popup_8077045c2cd8384028af778c837871a8.setContent(html_63b50110bb22889f5a5cbcb935b41d75);
+            
+        
+
+        circle_marker_36fc09133201fb1b399679d1e4aa1344.bindPopup(popup_8077045c2cd8384028af778c837871a8)
+        ;
+
+        
+    
+    
+            circle_marker_36fc09133201fb1b399679d1e4aa1344.bindTooltip(
+                `<div>
+                     ORN01: 23.01 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_287678355a3ed6fcbf341c79b8e30818 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_3f0a70232983a4a079d04a69904cf470);
+        
+    
+        var popup_76889a9856ad20e7f287f1752b8e6d2e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_091bc2967c0e800bbfd96f3cc1c5b7c1 = $(`<div id="html_091bc2967c0e800bbfd96f3cc1c5b7c1" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 34.24 µg/m³</div>`)[0];
+                popup_76889a9856ad20e7f287f1752b8e6d2e.setContent(html_091bc2967c0e800bbfd96f3cc1c5b7c1);
+            
+        
+
+        circle_marker_287678355a3ed6fcbf341c79b8e30818.bindPopup(popup_76889a9856ad20e7f287f1752b8e6d2e)
+        ;
+
+        
+    
+    
+            circle_marker_287678355a3ed6fcbf341c79b8e30818.bindTooltip(
+                `<div>
+                     ORN02: 34.24 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7fa92725422fb5dfd4ae982788990430 = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_3f0a70232983a4a079d04a69904cf470);
+        
+    
+        var popup_32c59165e600495471f50536423cf5a7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d06216527d82829e819c501be50831d1 = $(`<div id="html_d06216527d82829e819c501be50831d1" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 40.44 µg/m³</div>`)[0];
+                popup_32c59165e600495471f50536423cf5a7.setContent(html_d06216527d82829e819c501be50831d1);
+            
+        
+
+        circle_marker_7fa92725422fb5dfd4ae982788990430.bindPopup(popup_32c59165e600495471f50536423cf5a7)
+        ;
+
+        
+    
+    
+            circle_marker_7fa92725422fb5dfd4ae982788990430.bindTooltip(
+                `<div>
+                     RST18: 40.44 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_15a0bc3af1eb0ceb43d4cac31463d3c0 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_3f0a70232983a4a079d04a69904cf470);
+        
+    
+        var popup_e76bdedc9984a42123a7611b8066087a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4c0cd270c8772ea306a2e92cc265d3a3 = $(`<div id="html_4c0cd270c8772ea306a2e92cc265d3a3" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 35.75 µg/m³</div>`)[0];
+                popup_e76bdedc9984a42123a7611b8066087a.setContent(html_4c0cd270c8772ea306a2e92cc265d3a3);
+            
+        
+
+        circle_marker_15a0bc3af1eb0ceb43d4cac31463d3c0.bindPopup(popup_e76bdedc9984a42123a7611b8066087a)
+        ;
+
+        
+    
+    
+            circle_marker_15a0bc3af1eb0ceb43d4cac31463d3c0.bindTooltip(
+                `<div>
+                     TSRT: 35.75 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_134a146f4d957180775a57ccc19073aa = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_2071e2f1dcccf8f6dfad4d6cb362ed26 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_134a146f4d957180775a57ccc19073aa);
+        
+    
+        var popup_1dc30c58f5bce35a15c5f1a6901fb39b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1f0a1f19c2dac7e7150e02a76c8783de = $(`<div id="html_1f0a1f19c2dac7e7150e02a76c8783de" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 28.41 µg/m³</div>`)[0];
+                popup_1dc30c58f5bce35a15c5f1a6901fb39b.setContent(html_1f0a1f19c2dac7e7150e02a76c8783de);
+            
+        
+
+        circle_marker_2071e2f1dcccf8f6dfad4d6cb362ed26.bindPopup(popup_1dc30c58f5bce35a15c5f1a6901fb39b)
+        ;
+
+        
+    
+    
+            circle_marker_2071e2f1dcccf8f6dfad4d6cb362ed26.bindTooltip(
+                `<div>
+                     KZBG: 28.41 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1ec234a75f3bf7d19a86a22674f4cee6 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_134a146f4d957180775a57ccc19073aa);
+        
+    
+        var popup_cd9f430977d0fef1ad1b66481f53482d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dc99065d129856f315eaf5a321fedf9f = $(`<div id="html_dc99065d129856f315eaf5a321fedf9f" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 26.49 µg/m³</div>`)[0];
+                popup_cd9f430977d0fef1ad1b66481f53482d.setContent(html_dc99065d129856f315eaf5a321fedf9f);
+            
+        
+
+        circle_marker_1ec234a75f3bf7d19a86a22674f4cee6.bindPopup(popup_cd9f430977d0fef1ad1b66481f53482d)
+        ;
+
+        
+    
+    
+            circle_marker_1ec234a75f3bf7d19a86a22674f4cee6.bindTooltip(
+                `<div>
+                     ORN01: 26.49 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e4158baf7e792307d821f9505a3a8456 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_134a146f4d957180775a57ccc19073aa);
+        
+    
+        var popup_42fbabe618e12d242a80ec5803b3b5b0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d2d028c1ad2b009a6b5d170966001339 = $(`<div id="html_d2d028c1ad2b009a6b5d170966001339" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 36.04 µg/m³</div>`)[0];
+                popup_42fbabe618e12d242a80ec5803b3b5b0.setContent(html_d2d028c1ad2b009a6b5d170966001339);
+            
+        
+
+        circle_marker_e4158baf7e792307d821f9505a3a8456.bindPopup(popup_42fbabe618e12d242a80ec5803b3b5b0)
+        ;
+
+        
+    
+    
+            circle_marker_e4158baf7e792307d821f9505a3a8456.bindTooltip(
+                `<div>
+                     ORN02: 36.04 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1ba569e3dd47f361079c4010ec25f0f7 = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_134a146f4d957180775a57ccc19073aa);
+        
+    
+        var popup_5db6b1f8446e633f44a5d795ec3eca1b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5c0f2aa90774522a323fdf0bf5ddc76b = $(`<div id="html_5c0f2aa90774522a323fdf0bf5ddc76b" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 41.85 µg/m³</div>`)[0];
+                popup_5db6b1f8446e633f44a5d795ec3eca1b.setContent(html_5c0f2aa90774522a323fdf0bf5ddc76b);
+            
+        
+
+        circle_marker_1ba569e3dd47f361079c4010ec25f0f7.bindPopup(popup_5db6b1f8446e633f44a5d795ec3eca1b)
+        ;
+
+        
+    
+    
+            circle_marker_1ba569e3dd47f361079c4010ec25f0f7.bindTooltip(
+                `<div>
+                     RST18: 41.85 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_95ae86141fd5cc5ae0c0205616b58498 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_134a146f4d957180775a57ccc19073aa);
+        
+    
+        var popup_3f7161ac7555b3c2e0d4f85b9050fade = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_695633aff80b99bd468650225b74ac2b = $(`<div id="html_695633aff80b99bd468650225b74ac2b" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 29.12 µg/m³</div>`)[0];
+                popup_3f7161ac7555b3c2e0d4f85b9050fade.setContent(html_695633aff80b99bd468650225b74ac2b);
+            
+        
+
+        circle_marker_95ae86141fd5cc5ae0c0205616b58498.bindPopup(popup_3f7161ac7555b3c2e0d4f85b9050fade)
+        ;
+
+        
+    
+    
+            circle_marker_95ae86141fd5cc5ae0c0205616b58498.bindTooltip(
+                `<div>
+                     TSRT: 29.12 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_35f34c7b588595adc13612e844b80c11 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_2002343e1b7997805424020fc3a279b2 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_35f34c7b588595adc13612e844b80c11);
+        
+    
+        var popup_bc5a92e9e47fb35d4f3e0cc8f3212a64 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a369a4c77291bd4d9d8142b9eef999b1 = $(`<div id="html_a369a4c77291bd4d9d8142b9eef999b1" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 31.35 µg/m³</div>`)[0];
+                popup_bc5a92e9e47fb35d4f3e0cc8f3212a64.setContent(html_a369a4c77291bd4d9d8142b9eef999b1);
+            
+        
+
+        circle_marker_2002343e1b7997805424020fc3a279b2.bindPopup(popup_bc5a92e9e47fb35d4f3e0cc8f3212a64)
+        ;
+
+        
+    
+    
+            circle_marker_2002343e1b7997805424020fc3a279b2.bindTooltip(
+                `<div>
+                     KZBG: 31.35 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_590801b6414f488d4838579350af55a4 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_35f34c7b588595adc13612e844b80c11);
+        
+    
+        var popup_85418e7480f34546a2c242320a245ba9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_45509c31ae0a8c134ab7191054c33b9a = $(`<div id="html_45509c31ae0a8c134ab7191054c33b9a" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 33.75 µg/m³</div>`)[0];
+                popup_85418e7480f34546a2c242320a245ba9.setContent(html_45509c31ae0a8c134ab7191054c33b9a);
+            
+        
+
+        circle_marker_590801b6414f488d4838579350af55a4.bindPopup(popup_85418e7480f34546a2c242320a245ba9)
+        ;
+
+        
+    
+    
+            circle_marker_590801b6414f488d4838579350af55a4.bindTooltip(
+                `<div>
+                     ORN01: 33.75 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9efec67e629361add11b9c323545ea23 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bd0026", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_35f34c7b588595adc13612e844b80c11);
+        
+    
+        var popup_ebeea34d1eb81782e5fcd0d12f0ce6df = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2e303cb752a37160fa1e2966d16dab78 = $(`<div id="html_2e303cb752a37160fa1e2966d16dab78" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 48.73 µg/m³</div>`)[0];
+                popup_ebeea34d1eb81782e5fcd0d12f0ce6df.setContent(html_2e303cb752a37160fa1e2966d16dab78);
+            
+        
+
+        circle_marker_9efec67e629361add11b9c323545ea23.bindPopup(popup_ebeea34d1eb81782e5fcd0d12f0ce6df)
+        ;
+
+        
+    
+    
+            circle_marker_9efec67e629361add11b9c323545ea23.bindTooltip(
+                `<div>
+                     ORN02: 48.73 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7b90a4531a1eb908337c43c60a406e4c = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bd0026", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_35f34c7b588595adc13612e844b80c11);
+        
+    
+        var popup_bda0f56a95c557d71f89b86b80417d96 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f306ff5bfe3aa7943451b53535bc09b6 = $(`<div id="html_f306ff5bfe3aa7943451b53535bc09b6" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 50.20 µg/m³</div>`)[0];
+                popup_bda0f56a95c557d71f89b86b80417d96.setContent(html_f306ff5bfe3aa7943451b53535bc09b6);
+            
+        
+
+        circle_marker_7b90a4531a1eb908337c43c60a406e4c.bindPopup(popup_bda0f56a95c557d71f89b86b80417d96)
+        ;
+
+        
+    
+    
+            circle_marker_7b90a4531a1eb908337c43c60a406e4c.bindTooltip(
+                `<div>
+                     RST18: 50.20 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7e566cca2b8dae5781bd43ade1d899c7 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_35f34c7b588595adc13612e844b80c11);
+        
+    
+        var popup_898d32e9f49043676f5fcc27321c2d10 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3dfe218a449bc055bd35e896abc6f5a3 = $(`<div id="html_3dfe218a449bc055bd35e896abc6f5a3" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> PM10<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 41.01 µg/m³</div>`)[0];
+                popup_898d32e9f49043676f5fcc27321c2d10.setContent(html_3dfe218a449bc055bd35e896abc6f5a3);
+            
+        
+
+        circle_marker_7e566cca2b8dae5781bd43ade1d899c7.bindPopup(popup_898d32e9f49043676f5fcc27321c2d10)
+        ;
+
+        
+    
+    
+            circle_marker_7e566cca2b8dae5781bd43ade1d899c7.bindTooltip(
+                `<div>
+                     TSRT: 41.01 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_67e8e0d171dce56c6956f5484c5a85fe = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_137641261b11c0ad7eb0ab6683f36e88 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_67e8e0d171dce56c6956f5484c5a85fe);
+        
+    
+        var popup_3960c97389bb1d249603e1fb43cf09b8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_94bf050870a59eb0762c6a7c1013f4ae = $(`<div id="html_94bf050870a59eb0762c6a7c1013f4ae" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 42.00 µg/m³</div>`)[0];
+                popup_3960c97389bb1d249603e1fb43cf09b8.setContent(html_94bf050870a59eb0762c6a7c1013f4ae);
+            
+        
+
+        circle_marker_137641261b11c0ad7eb0ab6683f36e88.bindPopup(popup_3960c97389bb1d249603e1fb43cf09b8)
+        ;
+
+        
+    
+    
+            circle_marker_137641261b11c0ad7eb0ab6683f36e88.bindTooltip(
+                `<div>
+                     KZBG: 42.00 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ea84833156b3740aa2c8e2a13cf3a2d1 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_67e8e0d171dce56c6956f5484c5a85fe);
+        
+    
+        var popup_1b8e14eaf383c4e09e8f629edd0bb39f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d58ae75154fbf3ec66d7568c899218c4 = $(`<div id="html_d58ae75154fbf3ec66d7568c899218c4" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 33.23 µg/m³</div>`)[0];
+                popup_1b8e14eaf383c4e09e8f629edd0bb39f.setContent(html_d58ae75154fbf3ec66d7568c899218c4);
+            
+        
+
+        circle_marker_ea84833156b3740aa2c8e2a13cf3a2d1.bindPopup(popup_1b8e14eaf383c4e09e8f629edd0bb39f)
+        ;
+
+        
+    
+    
+            circle_marker_ea84833156b3740aa2c8e2a13cf3a2d1.bindTooltip(
+                `<div>
+                     ORN01: 33.23 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dd6165e57e0c3474b2e85e854455f5f3 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_67e8e0d171dce56c6956f5484c5a85fe);
+        
+    
+        var popup_d488c94a6e8fd8bfe55821bbc7069013 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9c6f4e9285c2b9a38b856611c3167527 = $(`<div id="html_9c6f4e9285c2b9a38b856611c3167527" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 32.93 µg/m³</div>`)[0];
+                popup_d488c94a6e8fd8bfe55821bbc7069013.setContent(html_9c6f4e9285c2b9a38b856611c3167527);
+            
+        
+
+        circle_marker_dd6165e57e0c3474b2e85e854455f5f3.bindPopup(popup_d488c94a6e8fd8bfe55821bbc7069013)
+        ;
+
+        
+    
+    
+            circle_marker_dd6165e57e0c3474b2e85e854455f5f3.bindTooltip(
+                `<div>
+                     ORN02: 32.93 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_323ad6aacaf44cb6051ac05584c2ee6d = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_67e8e0d171dce56c6956f5484c5a85fe);
+        
+    
+        var popup_aa84cd52e6105364be07d69d2f62406e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_017346e01cc54b283f0788d9537c564b = $(`<div id="html_017346e01cc54b283f0788d9537c564b" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 39.60 µg/m³</div>`)[0];
+                popup_aa84cd52e6105364be07d69d2f62406e.setContent(html_017346e01cc54b283f0788d9537c564b);
+            
+        
+
+        circle_marker_323ad6aacaf44cb6051ac05584c2ee6d.bindPopup(popup_aa84cd52e6105364be07d69d2f62406e)
+        ;
+
+        
+    
+    
+            circle_marker_323ad6aacaf44cb6051ac05584c2ee6d.bindTooltip(
+                `<div>
+                     RST18: 39.60 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_117907edba4708c61ea3b2c53c2a5095 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_67e8e0d171dce56c6956f5484c5a85fe);
+        
+    
+        var popup_720d759a96332e327d0d2abf9333893c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_eb18dafcc39f1b2bab81947b0d16ccda = $(`<div id="html_eb18dafcc39f1b2bab81947b0d16ccda" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Winter<br><b>Mean concentration:</b> 54.92 µg/m³</div>`)[0];
+                popup_720d759a96332e327d0d2abf9333893c.setContent(html_eb18dafcc39f1b2bab81947b0d16ccda);
+            
+        
+
+        circle_marker_117907edba4708c61ea3b2c53c2a5095.bindPopup(popup_720d759a96332e327d0d2abf9333893c)
+        ;
+
+        
+    
+    
+            circle_marker_117907edba4708c61ea3b2c53c2a5095.bindTooltip(
+                `<div>
+                     TSRT: 54.92 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_a665f46592a19ca5b712599f80a33ac0 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_349acf6183e846ea10806d3114d068e8 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_a665f46592a19ca5b712599f80a33ac0);
+        
+    
+        var popup_b6a304ec2e1acad6388f04bda088ca7f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_798ea102559ba3dd4aac89b796736877 = $(`<div id="html_798ea102559ba3dd4aac89b796736877" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 29.27 µg/m³</div>`)[0];
+                popup_b6a304ec2e1acad6388f04bda088ca7f.setContent(html_798ea102559ba3dd4aac89b796736877);
+            
+        
+
+        circle_marker_349acf6183e846ea10806d3114d068e8.bindPopup(popup_b6a304ec2e1acad6388f04bda088ca7f)
+        ;
+
+        
+    
+    
+            circle_marker_349acf6183e846ea10806d3114d068e8.bindTooltip(
+                `<div>
+                     KZBG: 29.27 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_da7777bd4b1d5abe4ca2e1853840d325 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_a665f46592a19ca5b712599f80a33ac0);
+        
+    
+        var popup_904abae783fe7429ea268dde877e6411 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e320cab98e9a3cf1af91e09dbfadf186 = $(`<div id="html_e320cab98e9a3cf1af91e09dbfadf186" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 30.30 µg/m³</div>`)[0];
+                popup_904abae783fe7429ea268dde877e6411.setContent(html_e320cab98e9a3cf1af91e09dbfadf186);
+            
+        
+
+        circle_marker_da7777bd4b1d5abe4ca2e1853840d325.bindPopup(popup_904abae783fe7429ea268dde877e6411)
+        ;
+
+        
+    
+    
+            circle_marker_da7777bd4b1d5abe4ca2e1853840d325.bindTooltip(
+                `<div>
+                     ORN01: 30.30 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c68a96c891a39b0cf50b28963b3794e6 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_a665f46592a19ca5b712599f80a33ac0);
+        
+    
+        var popup_33ad2473f8508ae88ab36915c9d57f87 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_68e76bc6cff0b69f35884bcb8da73fac = $(`<div id="html_68e76bc6cff0b69f35884bcb8da73fac" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 21.64 µg/m³</div>`)[0];
+                popup_33ad2473f8508ae88ab36915c9d57f87.setContent(html_68e76bc6cff0b69f35884bcb8da73fac);
+            
+        
+
+        circle_marker_c68a96c891a39b0cf50b28963b3794e6.bindPopup(popup_33ad2473f8508ae88ab36915c9d57f87)
+        ;
+
+        
+    
+    
+            circle_marker_c68a96c891a39b0cf50b28963b3794e6.bindTooltip(
+                `<div>
+                     ORN02: 21.64 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_60bb099cf31bdd7e9d53c526e66277a3 = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_a665f46592a19ca5b712599f80a33ac0);
+        
+    
+        var popup_59050056dbf1f65131776b4a58261e0b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b6d34616bcdb2f4d87ae55f3802a4628 = $(`<div id="html_b6d34616bcdb2f4d87ae55f3802a4628" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 25.91 µg/m³</div>`)[0];
+                popup_59050056dbf1f65131776b4a58261e0b.setContent(html_b6d34616bcdb2f4d87ae55f3802a4628);
+            
+        
+
+        circle_marker_60bb099cf31bdd7e9d53c526e66277a3.bindPopup(popup_59050056dbf1f65131776b4a58261e0b)
+        ;
+
+        
+    
+    
+            circle_marker_60bb099cf31bdd7e9d53c526e66277a3.bindTooltip(
+                `<div>
+                     RST18: 25.91 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_333bdc1b1a72b84e58744d5b5bdbf2f2 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8d3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_a665f46592a19ca5b712599f80a33ac0);
+        
+    
+        var popup_320dcf5b9979c23378c5608b5901d21a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_92d6a5b48862e9ffd78b9b94edf680d4 = $(`<div id="html_92d6a5b48862e9ffd78b9b94edf680d4" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Spring<br><b>Mean concentration:</b> 67.60 µg/m³</div>`)[0];
+                popup_320dcf5b9979c23378c5608b5901d21a.setContent(html_92d6a5b48862e9ffd78b9b94edf680d4);
+            
+        
+
+        circle_marker_333bdc1b1a72b84e58744d5b5bdbf2f2.bindPopup(popup_320dcf5b9979c23378c5608b5901d21a)
+        ;
+
+        
+    
+    
+            circle_marker_333bdc1b1a72b84e58744d5b5bdbf2f2.bindTooltip(
+                `<div>
+                     TSRT: 67.60 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_735781e0ec3c9d06f7dd88136ce3c8c6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_e99c5e49f5f7809d0d6462aaa92dd3f3 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_735781e0ec3c9d06f7dd88136ce3c8c6);
+        
+    
+        var popup_0e1fa172f735b32178356334efc3ade0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_613638c05dc8363c74368b9ec9c2553f = $(`<div id="html_613638c05dc8363c74368b9ec9c2553f" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 20.79 µg/m³</div>`)[0];
+                popup_0e1fa172f735b32178356334efc3ade0.setContent(html_613638c05dc8363c74368b9ec9c2553f);
+            
+        
+
+        circle_marker_e99c5e49f5f7809d0d6462aaa92dd3f3.bindPopup(popup_0e1fa172f735b32178356334efc3ade0)
+        ;
+
+        
+    
+    
+            circle_marker_e99c5e49f5f7809d0d6462aaa92dd3f3.bindTooltip(
+                `<div>
+                     KZBG: 20.79 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_98fc72b5ce3210c711fac2f8ff1c8b50 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_735781e0ec3c9d06f7dd88136ce3c8c6);
+        
+    
+        var popup_59dd47b9a6d68f13ffea9fe07c05d4e4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_619f24b4afa7ab3330943319aa87f5f3 = $(`<div id="html_619f24b4afa7ab3330943319aa87f5f3" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 20.80 µg/m³</div>`)[0];
+                popup_59dd47b9a6d68f13ffea9fe07c05d4e4.setContent(html_619f24b4afa7ab3330943319aa87f5f3);
+            
+        
+
+        circle_marker_98fc72b5ce3210c711fac2f8ff1c8b50.bindPopup(popup_59dd47b9a6d68f13ffea9fe07c05d4e4)
+        ;
+
+        
+    
+    
+            circle_marker_98fc72b5ce3210c711fac2f8ff1c8b50.bindTooltip(
+                `<div>
+                     ORN01: 20.80 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_35b3912306bed0c2ac854d833eb82bda = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_735781e0ec3c9d06f7dd88136ce3c8c6);
+        
+    
+        var popup_83c9744cca0cf32c1139b4b9e06ca5f5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4fb5864c046eaecbe487a541671686a3 = $(`<div id="html_4fb5864c046eaecbe487a541671686a3" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 14.90 µg/m³</div>`)[0];
+                popup_83c9744cca0cf32c1139b4b9e06ca5f5.setContent(html_4fb5864c046eaecbe487a541671686a3);
+            
+        
+
+        circle_marker_35b3912306bed0c2ac854d833eb82bda.bindPopup(popup_83c9744cca0cf32c1139b4b9e06ca5f5)
+        ;
+
+        
+    
+    
+            circle_marker_35b3912306bed0c2ac854d833eb82bda.bindTooltip(
+                `<div>
+                     ORN02: 14.90 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e2fafd693378d4e34eb037a38af86189 = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_735781e0ec3c9d06f7dd88136ce3c8c6);
+        
+    
+        var popup_8e7bced8d58b65cf3bfa70c802071c71 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_eb9fbadf94aba6f68f62bdb80d140431 = $(`<div id="html_eb9fbadf94aba6f68f62bdb80d140431" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 18.60 µg/m³</div>`)[0];
+                popup_8e7bced8d58b65cf3bfa70c802071c71.setContent(html_eb9fbadf94aba6f68f62bdb80d140431);
+            
+        
+
+        circle_marker_e2fafd693378d4e34eb037a38af86189.bindPopup(popup_8e7bced8d58b65cf3bfa70c802071c71)
+        ;
+
+        
+    
+    
+            circle_marker_e2fafd693378d4e34eb037a38af86189.bindTooltip(
+                `<div>
+                     RST18: 18.60 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d441fdb063db842dfdd3db1e258293ad = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bd0026", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_735781e0ec3c9d06f7dd88136ce3c8c6);
+        
+    
+        var popup_afaa336f037790af7ce61075c9346aec = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f6d2b12be85fa5f42e81858b274e8b67 = $(`<div id="html_f6d2b12be85fa5f42e81858b274e8b67" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Summer<br><b>Mean concentration:</b> 116.19 µg/m³</div>`)[0];
+                popup_afaa336f037790af7ce61075c9346aec.setContent(html_f6d2b12be85fa5f42e81858b274e8b67);
+            
+        
+
+        circle_marker_d441fdb063db842dfdd3db1e258293ad.bindPopup(popup_afaa336f037790af7ce61075c9346aec)
+        ;
+
+        
+    
+    
+            circle_marker_d441fdb063db842dfdd3db1e258293ad.bindTooltip(
+                `<div>
+                     TSRT: 116.19 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_1aa87f6763e0e8a2588040676e0d50ec = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_91f98315ac8faac1ddac54f55deb7cc7 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_1aa87f6763e0e8a2588040676e0d50ec);
+        
+    
+        var popup_8efb62558fb8f972e5181773c3454f3b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_66ebd0c97a184521ce43d617e230a37d = $(`<div id="html_66ebd0c97a184521ce43d617e230a37d" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 32.19 µg/m³</div>`)[0];
+                popup_8efb62558fb8f972e5181773c3454f3b.setContent(html_66ebd0c97a184521ce43d617e230a37d);
+            
+        
+
+        circle_marker_91f98315ac8faac1ddac54f55deb7cc7.bindPopup(popup_8efb62558fb8f972e5181773c3454f3b)
+        ;
+
+        
+    
+    
+            circle_marker_91f98315ac8faac1ddac54f55deb7cc7.bindTooltip(
+                `<div>
+                     KZBG: 32.19 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0387732aa8e1bbfeb647782555adb27a = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_1aa87f6763e0e8a2588040676e0d50ec);
+        
+    
+        var popup_d0e8979d4452e831e86be690214a39c7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bd72674f57ab78129c1674f0ac0640d6 = $(`<div id="html_bd72674f57ab78129c1674f0ac0640d6" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 29.26 µg/m³</div>`)[0];
+                popup_d0e8979d4452e831e86be690214a39c7.setContent(html_bd72674f57ab78129c1674f0ac0640d6);
+            
+        
+
+        circle_marker_0387732aa8e1bbfeb647782555adb27a.bindPopup(popup_d0e8979d4452e831e86be690214a39c7)
+        ;
+
+        
+    
+    
+            circle_marker_0387732aa8e1bbfeb647782555adb27a.bindTooltip(
+                `<div>
+                     ORN01: 29.26 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_331c4982649e9e469552d15b07ba5f07 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_1aa87f6763e0e8a2588040676e0d50ec);
+        
+    
+        var popup_a243dea923cbd02047fbdf2afbc34d6c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_07a611e23458942b9185fff0ef8f9907 = $(`<div id="html_07a611e23458942b9185fff0ef8f9907" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 25.82 µg/m³</div>`)[0];
+                popup_a243dea923cbd02047fbdf2afbc34d6c.setContent(html_07a611e23458942b9185fff0ef8f9907);
+            
+        
+
+        circle_marker_331c4982649e9e469552d15b07ba5f07.bindPopup(popup_a243dea923cbd02047fbdf2afbc34d6c)
+        ;
+
+        
+    
+    
+            circle_marker_331c4982649e9e469552d15b07ba5f07.bindTooltip(
+                `<div>
+                     ORN02: 25.82 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_84d82b09ff677024e24a8f12a94722a9 = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffb2", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_1aa87f6763e0e8a2588040676e0d50ec);
+        
+    
+        var popup_ea845316e79e95dcf80f5742e357f4f7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8d39217e6c75dddabe3717c772ecff1d = $(`<div id="html_8d39217e6c75dddabe3717c772ecff1d" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 31.61 µg/m³</div>`)[0];
+                popup_ea845316e79e95dcf80f5742e357f4f7.setContent(html_8d39217e6c75dddabe3717c772ecff1d);
+            
+        
+
+        circle_marker_84d82b09ff677024e24a8f12a94722a9.bindPopup(popup_ea845316e79e95dcf80f5742e357f4f7)
+        ;
+
+        
+    
+    
+            circle_marker_84d82b09ff677024e24a8f12a94722a9.bindTooltip(
+                `<div>
+                     RST18: 31.61 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2a98ae61917c923d307e6b5855ee604c = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecc5c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(feature_group_1aa87f6763e0e8a2588040676e0d50ec);
+        
+    
+        var popup_3aeb0bb7d69617c01589772a75b5cb73 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e4a1815e24aa529497a03f5fa49f2f1e = $(`<div id="html_e4a1815e24aa529497a03f5fa49f2f1e" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Pollutant:</b> NO2<br><b>Season:</b> Autumn<br><b>Mean concentration:</b> 54.46 µg/m³</div>`)[0];
+                popup_3aeb0bb7d69617c01589772a75b5cb73.setContent(html_e4a1815e24aa529497a03f5fa49f2f1e);
+            
+        
+
+        circle_marker_2a98ae61917c923d307e6b5855ee604c.bindPopup(popup_3aeb0bb7d69617c01589772a75b5cb73)
+        ;
+
+        
+    
+    
+            circle_marker_2a98ae61917c923d307e6b5855ee604c.bindTooltip(
+                `<div>
+                     TSRT: 54.46 µg/m³
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        const aqMap = map_77a609d16f15ea4cf8da60c3a333e654;
+
+        const aqLayers = {
+            
+            "feature_group_27421b41547ff8581fb28e3066381c87": {
+                layer: feature_group_27421b41547ff8581fb28e3066381c87,
+                pollutant: "PM2.5",
+                season: "Winter",
+                vmin: 9.751684782608695,
+                vmax: 36.82911111111111
+            },
+            
+            "feature_group_5380f8a81f1bc3dec82f33d6f3a0ee8f": {
+                layer: feature_group_5380f8a81f1bc3dec82f33d6f3a0ee8f,
+                pollutant: "PM2.5",
+                season: "Spring",
+                vmin: 9.751684782608695,
+                vmax: 36.82911111111111
+            },
+            
+            "feature_group_9fe22c45a5fe20611e97833087e26f58": {
+                layer: feature_group_9fe22c45a5fe20611e97833087e26f58,
+                pollutant: "PM2.5",
+                season: "Summer",
+                vmin: 9.751684782608695,
+                vmax: 36.82911111111111
+            },
+            
+            "feature_group_e8ef89117efaf8ddb751000830af5aec": {
+                layer: feature_group_e8ef89117efaf8ddb751000830af5aec,
+                pollutant: "PM2.5",
+                season: "Autumn",
+                vmin: 9.751684782608695,
+                vmax: 36.82911111111111
+            },
+            
+            "feature_group_2e692dffb77e2340e3e745b830fd0b2b": {
+                layer: feature_group_2e692dffb77e2340e3e745b830fd0b2b,
+                pollutant: "PM10",
+                season: "Winter",
+                vmin: 23.007391304347824,
+                vmax: 55.08588888888888
+            },
+            
+            "feature_group_3f0a70232983a4a079d04a69904cf470": {
+                layer: feature_group_3f0a70232983a4a079d04a69904cf470,
+                pollutant: "PM10",
+                season: "Spring",
+                vmin: 23.007391304347824,
+                vmax: 55.08588888888888
+            },
+            
+            "feature_group_134a146f4d957180775a57ccc19073aa": {
+                layer: feature_group_134a146f4d957180775a57ccc19073aa,
+                pollutant: "PM10",
+                season: "Summer",
+                vmin: 23.007391304347824,
+                vmax: 55.08588888888888
+            },
+            
+            "feature_group_35f34c7b588595adc13612e844b80c11": {
+                layer: feature_group_35f34c7b588595adc13612e844b80c11,
+                pollutant: "PM10",
+                season: "Autumn",
+                vmin: 23.007391304347824,
+                vmax: 55.08588888888888
+            },
+            
+            "feature_group_67e8e0d171dce56c6956f5484c5a85fe": {
+                layer: feature_group_67e8e0d171dce56c6956f5484c5a85fe,
+                pollutant: "NO2",
+                season: "Winter",
+                vmin: 14.897119565217393,
+                vmax: 116.19005555555555
+            },
+            
+            "feature_group_a665f46592a19ca5b712599f80a33ac0": {
+                layer: feature_group_a665f46592a19ca5b712599f80a33ac0,
+                pollutant: "NO2",
+                season: "Spring",
+                vmin: 14.897119565217393,
+                vmax: 116.19005555555555
+            },
+            
+            "feature_group_735781e0ec3c9d06f7dd88136ce3c8c6": {
+                layer: feature_group_735781e0ec3c9d06f7dd88136ce3c8c6,
+                pollutant: "NO2",
+                season: "Summer",
+                vmin: 14.897119565217393,
+                vmax: 116.19005555555555
+            },
+            
+            "feature_group_1aa87f6763e0e8a2588040676e0d50ec": {
+                layer: feature_group_1aa87f6763e0e8a2588040676e0d50ec,
+                pollutant: "NO2",
+                season: "Autumn",
+                vmin: 14.897119565217393,
+                vmax: 116.19005555555555
+            },
+            
+        };
+
+        function updateAirQualityMap() {
+            const pollutant =
+                document.getElementById("aq-pollutant").value;
+
+            const season =
+                document.getElementById("aq-season").value;
+
+            for (const info of Object.values(aqLayers)) {
+
+                const selected =
+                    info.pollutant === pollutant &&
+                    info.season === season;
+
+                if (selected) {
+                    if (!aqMap.hasLayer(info.layer)) {
+                        aqMap.addLayer(info.layer);
+                    }
+
+                    document.getElementById("aq-title").textContent =
+                        pollutant + " | " + season;
+
+                    document.getElementById("aq-min").textContent =
+                        info.vmin.toFixed(1);
+
+                    document.getElementById("aq-max").textContent =
+                        info.vmax.toFixed(1);
+
+                } else {
+                    if (aqMap.hasLayer(info.layer)) {
+                        aqMap.removeLayer(info.layer);
+                    }
+                }
+            }
+        }
+
+        document.getElementById("aq-pollutant")
+            .addEventListener("change", updateAirQualityMap);
+
+        document.getElementById("aq-season")
+            .addEventListener("change", updateAirQualityMap);
+
+        updateAirQualityMap();
+        
+</script>
+</html>

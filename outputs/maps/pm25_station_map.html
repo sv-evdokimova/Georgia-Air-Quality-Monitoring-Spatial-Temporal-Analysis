@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2ec1be0135e4e8d1de521b454c1140c0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2ec1be0135e4e8d1de521b454c1140c0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2ec1be0135e4e8d1de521b454c1140c0 = L.map(
+                "map_2ec1be0135e4e8d1de521b454c1140c0",
+                {
+                    center: [41.65, 44.9],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2d36ecd76e437ee0365086cae7a75ecd = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_2d36ecd76e437ee0365086cae7a75ecd.addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+            var circle_marker_05738d9a02143c3e69e3bfa18006a3cc = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb24cff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_a3f5e0199b79c44954a99515e8bee3c3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a0c0d040d6d423ca9caa1c08e73ad501 = $(`<div id="html_a0c0d040d6d423ca9caa1c08e73ad501" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Mean PM2.5:</b> 32.15</div>`)[0];
+                popup_a3f5e0199b79c44954a99515e8bee3c3.setContent(html_a0c0d040d6d423ca9caa1c08e73ad501);
+            
+        
+
+        circle_marker_05738d9a02143c3e69e3bfa18006a3cc.bindPopup(popup_a3f5e0199b79c44954a99515e8bee3c3)
+        ;
+
+        
+    
+    
+            circle_marker_05738d9a02143c3e69e3bfa18006a3cc.bindTooltip(
+                `<div>
+                     ORN02: 32.15
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_016ec5648f49ccabddea89db2a548e73 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeea1ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_41db29d654e589e33294b1d88db187ae = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_618f18e6f018816153610046493375f6 = $(`<div id="html_618f18e6f018816153610046493375f6" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Mean PM2.5:</b> 23.26</div>`)[0];
+                popup_41db29d654e589e33294b1d88db187ae.setContent(html_618f18e6f018816153610046493375f6);
+            
+        
+
+        circle_marker_016ec5648f49ccabddea89db2a548e73.bindPopup(popup_41db29d654e589e33294b1d88db187ae)
+        ;
+
+        
+    
+    
+            circle_marker_016ec5648f49ccabddea89db2a548e73.bindTooltip(
+                `<div>
+                     ORN02: 23.26
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_76b7c1d45cfe1dfc9476f06761b7fbaa = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b6ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_f314203a62ed4781055529bf868d9a15 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4d9b5566ff0d16b8b7fcb69feba462c1 = $(`<div id="html_4d9b5566ff0d16b8b7fcb69feba462c1" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Mean PM2.5:</b> 21.24</div>`)[0];
+                popup_f314203a62ed4781055529bf868d9a15.setContent(html_4d9b5566ff0d16b8b7fcb69feba462c1);
+            
+        
+
+        circle_marker_76b7c1d45cfe1dfc9476f06761b7fbaa.bindPopup(popup_f314203a62ed4781055529bf868d9a15)
+        ;
+
+        
+    
+    
+            circle_marker_76b7c1d45cfe1dfc9476f06761b7fbaa.bindTooltip(
+                `<div>
+                     ORN02: 21.24
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_321d91990cd9214098a1ee56d7d94450 = L.circleMarker(
+                [41.557951, 44.984443],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd8c3bff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_9bc23f78edc77d5a8c4127473bd42294 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9ba3c3378de06b80d69759b0b9e42e6d = $(`<div id="html_9ba3c3378de06b80d69759b0b9e42e6d" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN02<br><b>City:</b> Rustavi<br><b>Mean PM2.5:</b> 36.52</div>`)[0];
+                popup_9bc23f78edc77d5a8c4127473bd42294.setContent(html_9ba3c3378de06b80d69759b0b9e42e6d);
+            
+        
+
+        circle_marker_321d91990cd9214098a1ee56d7d94450.bindPopup(popup_9bc23f78edc77d5a8c4127473bd42294)
+        ;
+
+        
+    
+    
+            circle_marker_321d91990cd9214098a1ee56d7d94450.bindTooltip(
+                `<div>
+                     ORN02: 36.52
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_028fd57bf0ed6e1877b40028b1efcb49 = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe903dff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_36c24e27b4f42676a85002e9a3ad4e18 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3e15aff02003505a7018612fec64d3eb = $(`<div id="html_3e15aff02003505a7018612fec64d3eb" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Mean PM2.5:</b> 36.06</div>`)[0];
+                popup_36c24e27b4f42676a85002e9a3ad4e18.setContent(html_3e15aff02003505a7018612fec64d3eb);
+            
+        
+
+        circle_marker_028fd57bf0ed6e1877b40028b1efcb49.bindPopup(popup_36c24e27b4f42676a85002e9a3ad4e18)
+        ;
+
+        
+    
+    
+            circle_marker_028fd57bf0ed6e1877b40028b1efcb49.bindTooltip(
+                `<div>
+                     RST18: 36.06
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6f02fae1224033ff4cd81a8fb9e21c13 = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecd69ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_96ad6c46e544c3a5c7db3ad9c5ec618b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f46413e5af21fbd70fed559d81ddedad = $(`<div id="html_f46413e5af21fbd70fed559d81ddedad" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Mean PM2.5:</b> 29.07</div>`)[0];
+                popup_96ad6c46e544c3a5c7db3ad9c5ec618b.setContent(html_f46413e5af21fbd70fed559d81ddedad);
+            
+        
+
+        circle_marker_6f02fae1224033ff4cd81a8fb9e21c13.bindPopup(popup_96ad6c46e544c3a5c7db3ad9c5ec618b)
+        ;
+
+        
+    
+    
+            circle_marker_6f02fae1224033ff4cd81a8fb9e21c13.bindTooltip(
+                `<div>
+                     RST18: 29.07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_812b8bd7efca61ad7ec5e05fdc328f4a = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdf82ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_087504aead41d4046a12cf860d1ef8ca = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dd6178be308c987f92024436775b3ccf = $(`<div id="html_dd6178be308c987f92024436775b3ccf" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Mean PM2.5:</b> 26.47</div>`)[0];
+                popup_087504aead41d4046a12cf860d1ef8ca.setContent(html_dd6178be308c987f92024436775b3ccf);
+            
+        
+
+        circle_marker_812b8bd7efca61ad7ec5e05fdc328f4a.bindPopup(popup_087504aead41d4046a12cf860d1ef8ca)
+        ;
+
+        
+    
+    
+            circle_marker_812b8bd7efca61ad7ec5e05fdc328f4a.bindTooltip(
+                `<div>
+                     RST18: 26.47
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1344644bbcd6c48c35274bfc4ecedc2d = L.circleMarker(
+                [41.5462, 45.0145],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e9261fff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_8cdb3a76d69fc9b7bae4c0e426550031 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_33ec0e7a28cd8ba7af69b3d73a0b6c55 = $(`<div id="html_33ec0e7a28cd8ba7af69b3d73a0b6c55" style="width: 100.0%; height: 100.0%;"><b>Station:</b> RST18<br><b>City:</b> Rustavi<br><b>Mean PM2.5:</b> 44.11</div>`)[0];
+                popup_8cdb3a76d69fc9b7bae4c0e426550031.setContent(html_33ec0e7a28cd8ba7af69b3d73a0b6c55);
+            
+        
+
+        circle_marker_1344644bbcd6c48c35274bfc4ecedc2d.bindPopup(popup_8cdb3a76d69fc9b7bae4c0e426550031)
+        ;
+
+        
+    
+    
+            circle_marker_1344644bbcd6c48c35274bfc4ecedc2d.bindTooltip(
+                `<div>
+                     RST18: 44.11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f53418c2e21fe6fe1bd7b9e696d5a5f5 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe289ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_6ab72c1b342349ce80013f2c802da7a3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d8f73155568683e1af7de71c918128fb = $(`<div id="html_d8f73155568683e1af7de71c918128fb" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 25.82</div>`)[0];
+                popup_6ab72c1b342349ce80013f2c802da7a3.setContent(html_d8f73155568683e1af7de71c918128fb);
+            
+        
+
+        circle_marker_f53418c2e21fe6fe1bd7b9e696d5a5f5.bindPopup(popup_6ab72c1b342349ce80013f2c802da7a3)
+        ;
+
+        
+    
+    
+            circle_marker_f53418c2e21fe6fe1bd7b9e696d5a5f5.bindTooltip(
+                `<div>
+                     KZBG: 25.82
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0ce89acffcd435beb4c63a184a747c15 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffea99ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_aaf9e59fd248ffd60f980c6b9b9e6881 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_889afe2b8109e2eb99c65bf17e0e86d5 = $(`<div id="html_889afe2b8109e2eb99c65bf17e0e86d5" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 24.13</div>`)[0];
+                popup_aaf9e59fd248ffd60f980c6b9b9e6881.setContent(html_889afe2b8109e2eb99c65bf17e0e86d5);
+            
+        
+
+        circle_marker_0ce89acffcd435beb4c63a184a747c15.bindPopup(popup_aaf9e59fd248ffd60f980c6b9b9e6881)
+        ;
+
+        
+    
+    
+            circle_marker_0ce89acffcd435beb4c63a184a747c15.bindTooltip(
+                `<div>
+                     KZBG: 24.13
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4e2e7d91bfb72b23ebacae95f29f52e2 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffbc2ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_da9da8af58721b409b4c57d13e9cde1c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1c3d3a4144073e8835445d93a4d51b0a = $(`<div id="html_1c3d3a4144073e8835445d93a4d51b0a" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 20.09</div>`)[0];
+                popup_da9da8af58721b409b4c57d13e9cde1c.setContent(html_1c3d3a4144073e8835445d93a4d51b0a);
+            
+        
+
+        circle_marker_4e2e7d91bfb72b23ebacae95f29f52e2.bindPopup(popup_da9da8af58721b409b4c57d13e9cde1c)
+        ;
+
+        
+    
+    
+            circle_marker_4e2e7d91bfb72b23ebacae95f29f52e2.bindTooltip(
+                `<div>
+                     KZBG: 20.09
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4a98061c23cdd22435a08365768f2215 = L.circleMarker(
+                [41.7249, 44.75426],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed976ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_15e28c86324f48122360ffd744c0b30a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_43153011660cfb2b657039f645be8c3b = $(`<div id="html_43153011660cfb2b657039f645be8c3b" style="width: 100.0%; height: 100.0%;"><b>Station:</b> KZBG<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 27.76</div>`)[0];
+                popup_15e28c86324f48122360ffd744c0b30a.setContent(html_43153011660cfb2b657039f645be8c3b);
+            
+        
+
+        circle_marker_4a98061c23cdd22435a08365768f2215.bindPopup(popup_15e28c86324f48122360ffd744c0b30a)
+        ;
+
+        
+    
+    
+            circle_marker_4a98061c23cdd22435a08365768f2215.bindTooltip(
+                `<div>
+                     KZBG: 27.76
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5eb298d4786bc09b74a13ab675de5612 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe084ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_17bac23abddb8d766aacbb0ebaaa9e2e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2396a6c15ba32fcabc1a8a9853ac8242 = $(`<div id="html_2396a6c15ba32fcabc1a8a9853ac8242" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 26.27</div>`)[0];
+                popup_17bac23abddb8d766aacbb0ebaaa9e2e.setContent(html_2396a6c15ba32fcabc1a8a9853ac8242);
+            
+        
+
+        circle_marker_5eb298d4786bc09b74a13ab675de5612.bindPopup(popup_17bac23abddb8d766aacbb0ebaaa9e2e)
+        ;
+
+        
+    
+    
+            circle_marker_5eb298d4786bc09b74a13ab675de5612.bindTooltip(
+                `<div>
+                     ORN01: 26.27
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7aad67bb62b2fdb44a1be26989720840 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff7b8ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_416f4bb8a4af040e5ca501e2c3c82ee5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ea5a288f343525c0e066808a82ce5fbd = $(`<div id="html_ea5a288f343525c0e066808a82ce5fbd" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 21.02</div>`)[0];
+                popup_416f4bb8a4af040e5ca501e2c3c82ee5.setContent(html_ea5a288f343525c0e066808a82ce5fbd);
+            
+        
+
+        circle_marker_7aad67bb62b2fdb44a1be26989720840.bindPopup(popup_416f4bb8a4af040e5ca501e2c3c82ee5)
+        ;
+
+        
+    
+    
+            circle_marker_7aad67bb62b2fdb44a1be26989720840.bindTooltip(
+                `<div>
+                     ORN01: 21.02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e4a3b7a6508863e239c9df86469a9cc4 = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffccff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_d40826eedc77e6a659b67e8fe281f21d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_82f3e56ebf1a4cff055d31641978a08d = $(`<div id="html_82f3e56ebf1a4cff055d31641978a08d" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 19.04</div>`)[0];
+                popup_d40826eedc77e6a659b67e8fe281f21d.setContent(html_82f3e56ebf1a4cff055d31641978a08d);
+            
+        
+
+        circle_marker_e4a3b7a6508863e239c9df86469a9cc4.bindPopup(popup_d40826eedc77e6a659b67e8fe281f21d)
+        ;
+
+        
+    
+    
+            circle_marker_e4a3b7a6508863e239c9df86469a9cc4.bindTooltip(
+                `<div>
+                     ORN01: 19.04
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4c33c4ee610509b7875a4a865d7f8f7e = L.circleMarker(
+                [41.750951, 44.769115],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec35eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_e8fd52604da5aa9118e46dbbe2561e4c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_47260786da382d2151d0aa48b018e485 = $(`<div id="html_47260786da382d2151d0aa48b018e485" style="width: 100.0%; height: 100.0%;"><b>Station:</b> ORN01<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 30.19</div>`)[0];
+                popup_e8fd52604da5aa9118e46dbbe2561e4c.setContent(html_47260786da382d2151d0aa48b018e485);
+            
+        
+
+        circle_marker_4c33c4ee610509b7875a4a865d7f8f7e.bindPopup(popup_e8fd52604da5aa9118e46dbbe2561e4c)
+        ;
+
+        
+    
+    
+            circle_marker_4c33c4ee610509b7875a4a865d7f8f7e.bindTooltip(
+                `<div>
+                     ORN01: 30.19
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3a1024f03f639eaad1e92ea7f3985a0b = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6b32ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_669c7da7c3b30f10c7f765319dc9d455 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f321355395a119330f956e258d55a4c2 = $(`<div id="html_f321355395a119330f956e258d55a4c2" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 38.77</div>`)[0];
+                popup_669c7da7c3b30f10c7f765319dc9d455.setContent(html_f321355395a119330f956e258d55a4c2);
+            
+        
+
+        circle_marker_3a1024f03f639eaad1e92ea7f3985a0b.bindPopup(popup_669c7da7c3b30f10c7f765319dc9d455)
+        ;
+
+        
+    
+    
+            circle_marker_3a1024f03f639eaad1e92ea7f3985a0b.bindTooltip(
+                `<div>
+                     TSRT: 38.77
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_358dccb1cde98b5f7f7362fb792a06cc = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd5f2fff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_9949046246e6f2184a76b2b38a3c3368 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_356f094d7d76c9235dc19c8a2d9c8265 = $(`<div id="html_356f094d7d76c9235dc19c8a2d9c8265" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 39.60</div>`)[0];
+                popup_9949046246e6f2184a76b2b38a3c3368.setContent(html_356f094d7d76c9235dc19c8a2d9c8265);
+            
+        
+
+        circle_marker_358dccb1cde98b5f7f7362fb792a06cc.bindPopup(popup_9949046246e6f2184a76b2b38a3c3368)
+        ;
+
+        
+    
+    
+            circle_marker_358dccb1cde98b5f7f7362fb792a06cc.bindTooltip(
+                `<div>
+                     TSRT: 39.60
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ebe4d3c94a27654c70d20ee05486f1b3 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_528b5a6fb46ff6a0d0bdaae3d2c331d7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c92b1d115d83b5c09f53e1bac01eb9a2 = $(`<div id="html_c92b1d115d83b5c09f53e1bac01eb9a2" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 53.81</div>`)[0];
+                popup_528b5a6fb46ff6a0d0bdaae3d2c331d7.setContent(html_c92b1d115d83b5c09f53e1bac01eb9a2);
+            
+        
+
+        circle_marker_ebe4d3c94a27654c70d20ee05486f1b3.bindPopup(popup_528b5a6fb46ff6a0d0bdaae3d2c331d7)
+        ;
+
+        
+    
+    
+            circle_marker_ebe4d3c94a27654c70d20ee05486f1b3.bindTooltip(
+                `<div>
+                     TSRT: 53.81
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1bb21a4df61e735383a0b00ff18ddba8 = L.circleMarker(
+                [41.7419, 44.77931],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ef3122ff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+        
+    
+        var popup_f85120701d38d8b1dab55589699321e2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b05b54ffae3af71ce1d624b35acb22c4 = $(`<div id="html_b05b54ffae3af71ce1d624b35acb22c4" style="width: 100.0%; height: 100.0%;"><b>Station:</b> TSRT<br><b>City:</b> Tbilisi<br><b>Mean PM2.5:</b> 43.17</div>`)[0];
+                popup_f85120701d38d8b1dab55589699321e2.setContent(html_b05b54ffae3af71ce1d624b35acb22c4);
+            
+        
+
+        circle_marker_1bb21a4df61e735383a0b00ff18ddba8.bindPopup(popup_f85120701d38d8b1dab55589699321e2)
+        ;
+
+        
+    
+    
+            circle_marker_1bb21a4df61e735383a0b00ff18ddba8.bindTooltip(
+                `<div>
+                     TSRT: 43.17
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+    var color_map_c5594684f07abf76adb734a0c6de36cb = {};
+
+    
+    color_map_c5594684f07abf76adb734a0c6de36cb.color = d3.scale.threshold()
+              .domain([19.042789855072463, 19.1124687693777, 19.182147683682935, 19.25182659798817, 19.321505512293406, 19.39118442659864, 19.46086334090388, 19.530542255209117, 19.600221169514352, 19.669900083819588, 19.739578998124824, 19.80925791243006, 19.878936826735295, 19.94861574104053, 20.018294655345766, 20.087973569651002, 20.15765248395624, 20.227331398261477, 20.297010312566712, 20.366689226871948, 20.436368141177184, 20.50604705548242, 20.575725969787655, 20.64540488409289, 20.715083798398126, 20.784762712703362, 20.854441627008597, 20.924120541313833, 20.993799455619072, 21.063478369924308, 21.133157284229544, 21.20283619853478, 21.272515112840015, 21.34219402714525, 21.411872941450486, 21.481551855755722, 21.551230770060958, 21.620909684366193, 21.690588598671432, 21.760267512976668, 21.829946427281904, 21.89962534158714, 21.969304255892375, 22.03898317019761, 22.108662084502846, 22.178340998808082, 22.248019913113318, 22.317698827418553, 22.38737774172379, 22.457056656029025, 22.52673557033426, 22.5964144846395, 22.666093398944735, 22.73577231324997, 22.805451227555206, 22.875130141860442, 22.944809056165678, 23.014487970470913, 23.08416688477615, 23.153845799081388, 23.223524713386624, 23.29320362769186, 23.362882541997095, 23.43256145630233, 23.502240370607566, 23.571919284912802, 23.641598199218038, 23.711277113523273, 23.78095602782851, 23.850634942133745, 23.92031385643898, 23.989992770744216, 24.059671685049455, 24.12935059935469, 24.199029513659926, 24.268708427965162, 24.338387342270398, 24.408066256575633, 24.47774517088087, 24.547424085186105, 24.617102999491344, 24.68678191379658, 24.756460828101815, 24.82613974240705, 24.895818656712287, 24.965497571017522, 25.035176485322758, 25.104855399627994, 25.17453431393323, 25.244213228238465, 25.3138921425437, 25.383571056848936, 25.45324997115417, 25.522928885459407, 25.592607799764647, 25.662286714069882, 25.731965628375118, 25.801644542680354, 25.87132345698559, 25.941002371290825, 26.01068128559606, 26.080360199901296, 26.150039114206535, 26.21971802851177, 26.289396942817007, 26.359075857122242, 26.428754771427478, 26.498433685732714, 26.56811260003795, 26.637791514343185, 26.70747042864842, 26.777149342953656, 26.846828257258892, 26.916507171564128, 26.986186085869363, 27.0558650001746, 27.125543914479834, 27.19522282878507, 27.26490174309031, 27.334580657395545, 27.404259571700784, 27.473938486006016, 27.543617400311252, 27.61329631461649, 27.682975228921727, 27.752654143226962, 27.822333057532198, 27.892011971837434, 27.96169088614267, 28.031369800447905, 28.10104871475314, 28.170727629058376, 28.240406543363612, 28.310085457668848, 28.379764371974083, 28.44944328627932, 28.519122200584555, 28.58880111488979, 28.658480029195026, 28.728158943500265, 28.7978378578055, 28.867516772110736, 28.937195686415972, 29.006874600721208, 29.076553515026447, 29.146232429331683, 29.215911343636918, 29.285590257942154, 29.35526917224739, 29.424948086552625, 29.49462700085786, 29.564305915163096, 29.633984829468332, 29.703663743773568, 29.773342658078803, 29.84302157238404, 29.912700486689275, 29.98237940099451, 30.052058315299746, 30.121737229604985, 30.19141614391022, 30.261095058215453, 30.330773972520692, 30.400452886825928, 30.470131801131167, 30.5398107154364, 30.609489629741635, 30.679168544046874, 30.74884745835211, 30.818526372657345, 30.88820528696258, 30.957884201267817, 31.027563115573052, 31.097242029878288, 31.166920944183524, 31.23659985848876, 31.306278772793995, 31.37595768709923, 31.445636601404466, 31.515315515709702, 31.584994430014937, 31.654673344320173, 31.724352258625412, 31.794031172930648, 31.863710087235884, 31.93338900154112, 32.00306791584636, 32.07274683015159, 32.14242574445683, 32.212104658762065, 32.2817835730673, 32.35146248737254, 32.42114140167777, 32.49082031598301, 32.560499230288244, 32.63017814459348, 32.699857058898715, 32.76953597320395, 32.839214887509186, 32.90889380181442, 32.97857271611966, 33.04825163042489, 33.11793054473013, 33.18760945903537, 33.2572883733406, 33.326967287645836, 33.39664620195107, 33.466325116256314, 33.53600403056155, 33.605682944866786, 33.675361859172014, 33.74504077347726, 33.81471968778249, 33.88439860208773, 33.954077516392964, 34.0237564306982, 34.093435345003435, 34.16311425930867, 34.232793173613906, 34.30247208791914, 34.37215100222438, 34.44182991652961, 34.51150883083485, 34.581187745140085, 34.65086665944532, 34.720545573750556, 34.7902244880558, 34.85990340236103, 34.92958231666627, 34.9992612309715, 35.06894014527674, 35.13861905958197, 35.20829797388721, 35.27797688819245, 35.347655802497684, 35.41733471680292, 35.487013631108155, 35.55669254541339, 35.62637145971863, 35.69605037402386, 35.7657292883291, 35.83540820263434, 35.90508711693957, 35.974766031244805, 36.04444494555004, 36.114123859855276, 36.18380277416051, 36.253481688465754, 36.32316060277098, 36.392839517076226, 36.462518431381454, 36.5321973456867, 36.601876259991926, 36.67155517429717, 36.7412340886024, 36.81091300290764, 36.880591917212875, 36.95027083151811, 37.01994974582335, 37.08962866012858, 37.15930757443382, 37.228986488739054, 37.29866540304429, 37.368344317349525, 37.43802323165476, 37.507702145959996, 37.57738106026524, 37.64705997457047, 37.71673888887571, 37.78641780318094, 37.85609671748618, 37.92577563179141, 37.99545454609665, 38.06513346040188, 38.134812374707124, 38.20449128901235, 38.274170203317595, 38.34384911762283, 38.41352803192807, 38.4832069462333, 38.55288586053854, 38.62256477484377, 38.69224368914901, 38.761922603454245, 38.83160151775948, 38.901280432064716, 38.97095934636995, 39.040638260675195, 39.11031717498042, 39.179996089285666, 39.249675003590895, 39.31935391789613, 39.389032832201366, 39.45871174650661, 39.52839066081184, 39.59806957511708, 39.66774848942231, 39.73742740372755, 39.80710631803279, 39.87678523233802, 39.94646414664326, 40.016143060948494, 40.08582197525373, 40.155500889558965, 40.2251798038642, 40.294858718169436, 40.36453763247467, 40.43421654677991, 40.50389546108515, 40.57357437539038, 40.64325328969562, 40.71293220400085, 40.782611118306086, 40.85229003261132, 40.921968946916564, 40.99164786122179, 41.061326775527036, 41.131005689832264, 41.20068460413751, 41.27036351844274, 41.34004243274798, 41.40972134705321, 41.47940026135845, 41.549079175663685, 41.61875808996892, 41.68843700427416, 41.75811591857939, 41.82779483288463, 41.89747374718986, 41.967152661495106, 42.036831575800335, 42.10651049010557, 42.176189404410806, 42.24586831871605, 42.31554723302128, 42.38522614732652, 42.45490506163175, 42.52458397593699, 42.59426289024222, 42.66394180454746, 42.73362071885269, 42.803299633157934, 42.87297854746316, 42.942657461768405, 43.01233637607364, 43.08201529037888, 43.15169420468411, 43.22137311898935, 43.291052033294584, 43.36073094759982, 43.430409861905055, 43.50008877621029, 43.569767690515526, 43.63944660482076, 43.709125519126005, 43.77880443343123, 43.848483347736476, 43.918162262041704, 43.98784117634695, 44.05752009065218, 44.12719900495742, 44.19687791926265, 44.26655683356789, 44.33623574787312, 44.40591466217836, 44.4755935764836, 44.54527249078883, 44.61495140509407, 44.684630319399304, 44.75430923370455, 44.823988148009775, 44.89366706231501, 44.963345976620246, 45.03302489092548, 45.10270380523072, 45.17238271953596, 45.24206163384119, 45.31174054814643, 45.38141946245166, 45.4510983767569, 45.52077729106213, 45.590456205367374, 45.6601351196726, 45.729814033977846, 45.799492948283074, 45.86917186258832, 45.93885077689355, 46.00852969119879, 46.078208605504024, 46.14788751980926, 46.217566434114495, 46.28724534841973, 46.35692426272497, 46.4266031770302, 46.49628209133544, 46.56596100564067, 46.635639919945916, 46.705318834251145, 46.77499774855639, 46.844676662861616, 46.91435557716685, 46.98403449147209, 47.05371340577733, 47.12339232008256, 47.1930712343878, 47.26275014869303, 47.33242906299827, 47.40210797730351, 47.471786891608744, 47.54146580591397, 47.611144720219215, 47.68082363452445, 47.75050254882969, 47.82018146313492, 47.88986037744016, 47.95953929174539, 48.02921820605063, 48.09889712035587, 48.1685760346611, 48.238254948966336, 48.30793386327157, 48.377612777576815, 48.44729169188204, 48.516970606187286, 48.586649520492514, 48.65632843479776, 48.72600734910299, 48.79568626340823, 48.865365177713464, 48.9350440920187, 49.00472300632393, 49.07440192062917, 49.14408083493441, 49.21375974923964, 49.28343866354488, 49.353117577850114, 49.42279649215535, 49.492475406460585, 49.56215432076583, 49.631833235071056, 49.70151214937629, 49.77119106368153, 49.84086997798677, 49.910548892292, 49.98022780659724, 50.04990672090247, 50.11958563520771, 50.18926454951295, 50.258943463818184, 50.32862237812341, 50.398301292428656, 50.467980206733884, 50.53765912103913, 50.60733803534436, 50.6770169496496, 50.746695863954834, 50.81637477826007, 50.88605369256531, 50.95573260687054, 51.025411521175776, 51.09509043548101, 51.16476934978625, 51.23444826409148, 51.30412717839672, 51.373806092701955, 51.4434850070072, 51.51316392131243, 51.58284283561767, 51.6525217499229, 51.72220066422813, 51.791879578533376, 51.86155849283861, 51.93123740714385, 52.000916321449075, 52.07059523575432, 52.140274150059554, 52.20995306436479, 52.279631978670025, 52.34931089297526, 52.4189898072805, 52.48866872158574, 52.55834763589097, 52.62802655019621, 52.69770546450144, 52.767384378806675, 52.83706329311191, 52.906742207417146, 52.97642112172239, 53.04610003602762, 53.11577895033286, 53.18545786463809, 53.25513677894333, 53.32481569324857, 53.394494607553796, 53.46417352185904, 53.53385243616427, 53.60353135046951, 53.673210264774745, 53.74288917907998, 53.81256809338522])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_c5594684f07abf76adb734a0c6de36cb.x = d3.scale.linear()
+              .domain([19.042789855072463, 53.81256809338522])
+              .range([0, 450 - 50]);
+
+    color_map_c5594684f07abf76adb734a0c6de36cb.legend = L.control({position: 'topright'});
+    color_map_c5594684f07abf76adb734a0c6de36cb.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_c5594684f07abf76adb734a0c6de36cb.legend.addTo(map_2ec1be0135e4e8d1de521b454c1140c0);
+
+    color_map_c5594684f07abf76adb734a0c6de36cb.xAxis = d3.svg.axis()
+        .scale(color_map_c5594684f07abf76adb734a0c6de36cb.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([19.042789855072463, 23.38901213486156, 27.73523441465065, 32.081456694439744, 36.42767897422884, 40.773901254017936, 45.12012353380703, 49.46634581359612, 53.81256809338522]);
+
+    color_map_c5594684f07abf76adb734a0c6de36cb.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_c5594684f07abf76adb734a0c6de36cb.g = color_map_c5594684f07abf76adb734a0c6de36cb.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_c5594684f07abf76adb734a0c6de36cb.g.selectAll("rect")
+        .data(color_map_c5594684f07abf76adb734a0c6de36cb.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_c5594684f07abf76adb734a0c6de36cb.x(color_map_c5594684f07abf76adb734a0c6de36cb.color.domain()[i - 1]) : color_map_c5594684f07abf76adb734a0c6de36cb.x.range()[0],
+            x1: i < color_map_c5594684f07abf76adb734a0c6de36cb.color.domain().length ? color_map_c5594684f07abf76adb734a0c6de36cb.x(color_map_c5594684f07abf76adb734a0c6de36cb.color.domain()[i]) : color_map_c5594684f07abf76adb734a0c6de36cb.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_c5594684f07abf76adb734a0c6de36cb.g.call(color_map_c5594684f07abf76adb734a0c6de36cb.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("Mean {pollutant} concentration, 2024\u20132025");
+</script>
+</html>

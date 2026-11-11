@@ -1,0 +1,21 @@
+station_id,code,address_en,lat,lon,elev,n_equipment
+1,KUTS,Kutaisi - Lado Asatiani St.№98,42.249081,42.693868,142.0,17
+3,BTUM,Batumi - T. Abuseridze Street №1,41.640908,41.624101,9.0,17
+6,TSRT,Tbilisi - Akaki Tsereteli ave. №105,41.7419,44.77931,412.0,13
+7,KZBG,Tbilisi - Kazbegi Ave. near Vaso Godziashvili Garden,41.7249,44.75426,451.0,12
+8,VRKT,"Tbilisi - Varketili 3, IIIa m/d, near №325",41.707278,44.875532,518.0,12
+222,RST18,Rustavi - Batumi Street No. 19,41.5462,45.0145,332.0,15
+544,ORN01,Tbilisi - Marshal Gelovani Avenue  №34,41.750951,44.769115,435.0,8
+545,ORN02,Rustavi - Friendship Ave. №35a,41.557951,44.984443,343.0,9
+546,ORN03,"Batumi - Batumi Central Park, 6 May Park",41.647864,41.629368,10.0,9
+547,ORN04,Kutaisi-Ninoshvili Street and D.Aghmashenebeli Ave.,42.262504,42.692266,146.0,9
+548,ORN05,Zugdidi - Rustaveli Street №192,42.50743,41.858073,104.0,9
+549,ORN06,Mestia town,43.048754,42.746447,1428.0,9
+550,ORN07,Telavi-Kvirike Didi Street №43,41.916287,45.465198,761.0,9
+551,ORN08,Akhaltsikhe-Aspindza Street №18,41.640024,42.991781,3.0,9
+555,01005,Tazakendi,41.504845,45.051304,,14
+572,01001,Poti,42.1416055555556,41.6757944444444,0.0,16
+573,01002,Ozurgeti,41.92345,42.0071277777778,0.0,15
+574,01003,Zestafoni,42.1057361111111,43.0371166666667,0.0,15
+575,01004,Kveda Sakara,42.1248527777778,43.0257222222222,0.0,14
+577,01007,"9 Chonkadze St, Kombinati",41.9854722222222,44.1006944444444,0.0,11
