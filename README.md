@@ -57,6 +57,7 @@ The following is a suggested repository layout. Adjust filenames to match the fi
 
 ```text
 Georgia-Air-Quality-Monitoring/
+├── .gitattributes
 ├── README.md
 ├── requirements.txt
 ├── data/
