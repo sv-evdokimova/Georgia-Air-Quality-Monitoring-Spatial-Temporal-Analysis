@@ -155,9 +155,10 @@ conditions — play an important role.
 ![PM10_seasonal](outputs/figures/PM10_seasonal.png)
 ![PM2_5_seasonal.png](outputs/figures/PM2_5_seasonal.png)
 ![NO2_seasonal.png](outputs/figures/NO2_seasonal.png)
-- **Tbilisi vs. Rustavi:** [Insert a comparison supported by the data.]
-- **Station-level differences:** [Identify noteworthy variation and its limitations.]
-- **Data quality:** [Summarize missingness and any measurement anomalies.]
+- **Station-level differences:** 
+Air pollutant concentrations vary across monitoring stations in Tbilisi and Rustavi, indicating spatial differences in air quality. These variations may reflect local emission sources, traffic intensity, industrial activities, meteorological conditions, and urban characteristics. However, the limited number of monitoring stations and their uneven spatial distribution restrict the interpretation of these patterns. Station-level measurements should not be considered representative of entire cities.
+- **Data quality:** 
+The dataset was compiled from 144 official monthly air quality reports covering 2024–2025. Data processing included merging station records, standardizing dates and pollutant names, identifying missing measurements, and checking for duplicate station-date records. The processed dataset contains 22,717 non-missing pollutant observations, with no duplicate station-date records detected. Some unusually high pollutant concentrations were retained because there was insufficient evidence to classify them as measurement errors. Missing observations and differences in station coverage may affect temporal and spatial comparisons.
 
 ## Limitations
 
