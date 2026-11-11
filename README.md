@@ -170,6 +170,6 @@ Air-quality measurements: **Georgian National Environmental Agency**, [air.gov.g
 
 ## Author
 
-**[(si187971-dev)]**  
+**[(sv-evdokimova)]**  
 GIS & Data Science Portfolio Project  
-**[(https://github.com/si187971-dev)]**
+**[(https://github.com/sv-evdokimova)]**
